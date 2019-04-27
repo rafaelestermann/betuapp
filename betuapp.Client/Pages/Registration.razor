@@ -1,0 +1,62 @@
+﻿@page "/Registration"
+@using betuapp.Shared
+@inject HttpClient Http
+
+<h1>Create your account</h1>
+<h2>@number</h2>
+<button class="btn btn-primary" onclick="@CreateAccount">Click me</button>
+
+@if (accounts == null)
+{
+
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var acc in accounts)
+        {
+            <tr>
+                <td>@acc.Id</td>
+                <td>@acc.Username</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+
+
+@functions {
+    int number = 10;
+    Account[] accounts;
+    private async Task CreateAccount()
+    {
+        number++;
+        var account = new Account()
+        {
+            Firstname = "Tom",
+            Lastname = "Clarke",
+            Email = "tomclarek@hotmail.ch",
+            Username = "tomcl",
+            Password = "password",
+            OwnedCash = 230
+        };
+        await Http.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/CreateAccount", account);
+
+        accounts = null;
+        accounts = await Http.GetJsonAsync<Account[]>("api/AccountData/Accounts");
+    }
+
+    protected override async Task OnInitAsync()
+    {
+        accounts = await Http.GetJsonAsync<Account[]>("api/AccountData/Accounts");
+    }
+
+}
