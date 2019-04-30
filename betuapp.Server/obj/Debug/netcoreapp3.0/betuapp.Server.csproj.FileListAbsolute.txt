@@ -1,7 +1,3 @@
-C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.csprojAssemblyReference.cache
-C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.csproj.CoreCompileInputs.cache
-C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.AssemblyInfoInputs.cache
-C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.AssemblyInfo.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Client.blazor.config
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Server.exe
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Server.deps.json
@@ -41,6 +37,10 @@ C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betua
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Shared.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Client.pdb
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Shared.pdb
+C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.csprojAssemblyReference.cache
+C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.csproj.CoreCompileInputs.cache
+C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.AssemblyInfoInputs.cache
+C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.AssemblyInfo.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.RazorTargetAssemblyInfo.cache
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.csproj.CopyComplete
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.dll

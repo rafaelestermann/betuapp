@@ -4,7 +4,7 @@ using System.Text;
 
 namespace betuapp.Shared
 {
-    public class Bet
+    public class ExtentedBet
     {
         public long Id { get; set; }
         public string Name { get; set; }

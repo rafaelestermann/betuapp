@@ -4,7 +4,7 @@
 
 <h1>Create your account</h1>
 <h2>@number</h2>
-<button class="btn btn-primary" onclick="@CreateAccount">Click me</button>
+<button class="btn btn-primary" onclick=@(async () => await CreateAccount())>Click me</button>
 
 @if (accounts == null)
 {
@@ -12,47 +12,62 @@
 }
 else
 {
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Username</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var acc in accounts)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@acc.Id</td>
-                <td>@acc.Username</td>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Delete</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var acc in @accounts)
+            {
+                <tr>
+                    <td>@acc.Id</td>
+                    <td>@acc.Username</td>
+                    <td><button onclick=@(async () => await Delete(acc))/> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 
 
 @functions {
-    int number = 10;
-    Account[] accounts;
-    private async Task CreateAccount()
-    {
-        number++;
-        var account = new Account()
-        {
-            Firstname = "Tom",
-            Lastname = "Clarke",
-            Email = "tomclarek@hotmail.ch",
-            Username = "tomcl",
-            Password = "password",
-            OwnedCash = 230
-        };
-        await Http.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/CreateAccount", account);
+        int number = 10;
+        IList<Account> accounts = new List<Account>();
 
-        accounts = null;
-        accounts = await Http.GetJsonAsync<Account[]>("api/AccountData/Accounts");
-    }
+        private async Task Delete(Account acc)
+        {
+            Account createdAccount = await Http.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/DeleteAccount", acc.Id);
+            await Refresh();           
+        }
+
+        private async Task CreateAccount()
+        {
+            number++;
+            var account = new Account()
+            {
+                Firstname = "Tom",
+                Lastname = "Clarke",
+                Email = "tomclarek@hotmail.ch",
+                Username = "tomcl",
+                Password = "password",
+                OwnedCash = 230
+            };
+            Account createdAccount = await Http.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/CreateAccount", account);
+            await Refresh();           
+
+        }
+        private async Task Refresh()
+        {
+            accounts = await Http.GetJsonAsync<List<Account>>("api/AccountData/Accounts");
+            StateHasChanged();
+        }
+
+
 
     protected override async Task OnInitAsync()
     {

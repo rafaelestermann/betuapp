@@ -17,7 +17,7 @@ namespace BlazorCrud.Server.DataAccess
         {
             try
             {
-                return db.Bet.ToList();
+                return db.Bet.Include(x => x.Challenger).Include(x => x.Challenged).ToList();
             }
             catch
             {

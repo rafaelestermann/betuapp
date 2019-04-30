@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace betuapp.Server.Controllers
 {
@@ -39,9 +39,17 @@ namespace betuapp.Server.Controllers
         }
 
         [HttpPost("[action]")]
-        public void CreateAccount([FromBody]Account account)
+        public Account CreateAccount([FromBody]Account account)
         {
             dataservice.AddAccount(account);
+            return new Account();
+        }
+
+        [HttpPost("[action]")]
+        public Account DeleteAccount([FromBody]long id)
+        {
+            dataservice.DeleteAccount(id);
+            return new Account();
         }
     }
 }

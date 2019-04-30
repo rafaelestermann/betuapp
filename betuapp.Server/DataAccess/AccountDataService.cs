@@ -68,7 +68,7 @@ namespace BlazorCrud.Server.DataAccess
         }
 
         //To Delete the record of a particular Account    
-        public void DeleteAccount(int id)
+        public void DeleteAccount(long id)
         {
             try
             {

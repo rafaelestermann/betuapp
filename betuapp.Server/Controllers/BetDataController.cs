@@ -18,5 +18,7 @@ namespace betuapp.Server.Controllers
         {
             return dataservice.GetAllBets();
         }
+
+
     }
 }
