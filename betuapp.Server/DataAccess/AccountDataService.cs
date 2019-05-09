@@ -78,7 +78,6 @@ namespace BlazorCrud.Server.DataAccess
             }
             catch
             {
-                throw;
             }
         }
     }

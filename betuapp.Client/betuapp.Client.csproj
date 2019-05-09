@@ -12,12 +12,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview4-19216-03" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.0.0-preview4-19216-03" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\betuapp.Shared\betuapp.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0-preview4-19216-03\ref\netcoreapp3.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

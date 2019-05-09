@@ -2,6 +2,30 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "Blazored.LocalStorage/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Browser": "3.0.0-preview4-19216-03"
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazored.LocalStorage.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazored.LocalStorage.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/netstandard2.0/content/blazored.LocalStorage.js": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netstandard2.0/content/blazored.LocalStorage.js.map": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "Microsoft.AspNetCore.Blazor/3.0.0-preview4-19216-03": {
         "type": "package",
         "dependencies": {
@@ -146,6 +170,22 @@
     }
   },
   "libraries": {
+    "Blazored.LocalStorage/2.0.0": {
+      "sha512": "5pHXWftkU4o+ykV3oKpuXGumAlf/YLacwTSY8jCsEDQL8C6c9cMHNSRRnpsg/aIzsOIUCv7MZPJ1o72IwMqmwA==",
+      "type": "package",
+      "path": "blazored.localstorage/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.localstorage.2.0.0.nupkg.sha512",
+        "blazored.localstorage.nuspec",
+        "content/content/blazored.LocalStorage.js",
+        "content/content/blazored.LocalStorage.js.map",
+        "contentFiles/any/netstandard2.0/content/blazored.LocalStorage.js",
+        "contentFiles/any/netstandard2.0/content/blazored.LocalStorage.js.map",
+        "lib/netstandard2.0/Blazored.LocalStorage.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Blazor/3.0.0-preview4-19216-03": {
       "sha512": "y4LMGWkIiE1fzpJSmNDIElYbyPg98e/seMgL+A3+ye3v9Zy2+WGF1SqZB6Ax4queHLazvakmQ55NCnFtzyTBhg==",
       "type": "package",
@@ -730,6 +770,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Blazored.LocalStorage >= 2.0.0",
       "Microsoft.AspNetCore.Blazor >= 3.0.0-preview4-19216-03",
       "Microsoft.AspNetCore.Blazor.Build >= 3.0.0-preview4-19216-03",
       "NETStandard.Library >= 2.0.3",
@@ -783,6 +824,10 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Blazored.LocalStorage": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
           "Microsoft.AspNetCore.Blazor": {
             "target": "Package",
             "version": "[3.0.0-preview4-19216-03, )"

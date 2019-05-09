@@ -23,10 +23,7 @@ namespace betuapp.Server.Controllers
         public ReducedAccount Account(string username, string password)
         {
            var acc = Accounts().Where(acco => acco.Username == username && acco.Password == password).FirstOrDefault();
-           if(acc == null)
-           {
-                return null;
-           }
+        
 
             return new ReducedAccount()
             {

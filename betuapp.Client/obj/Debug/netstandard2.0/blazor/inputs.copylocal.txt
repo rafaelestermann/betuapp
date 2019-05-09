@@ -1,3 +1,4 @@
+C:\Users\rafae\.nuget\packages\blazored.localstorage\2.0.0\lib\netstandard2.0\Blazored.LocalStorage.dll
 C:\Users\rafae\.nuget\packages\microsoft.aspnetcore.blazor\3.0.0-preview4-19216-03\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.dll
 C:\Users\rafae\.nuget\packages\microsoft.aspnetcore.components\3.0.0-preview4-19216-03\lib\netstandard2.0\Microsoft.AspNetCore.Components.dll
 C:\Users\rafae\.nuget\packages\microsoft.aspnetcore.components.browser\3.0.0-preview4-19216-03\lib\netstandard2.0\Microsoft.AspNetCore.Components.Browser.dll
@@ -7,3 +8,4 @@ C:\Users\rafae\.nuget\packages\microsoft.jsinterop\3.0.0-preview4.19216.2\lib\ne
 C:\Users\rafae\.nuget\packages\mono.webassembly.interop\3.0.0-preview4.19216.2\lib\netstandard2.0\Mono.WebAssembly.Interop.dll
 C:\Users\rafae\.nuget\packages\system.componentmodel.annotations\4.6.0-preview4.19212.13\lib\netstandard2.0\System.ComponentModel.Annotations.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Shared\bin\Debug\netstandard2.0\betuapp.Shared.dll
+C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0-preview4-19216-03\ref\netcoreapp3.0\Newtonsoft.Json.dll

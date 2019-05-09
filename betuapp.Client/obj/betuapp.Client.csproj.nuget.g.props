@@ -12,6 +12,22 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)blazored.localstorage\2.0.0\contentFiles\any\netstandard2.0\content\blazored.LocalStorage.js" Condition="Exists('$(NuGetPackageRoot)blazored.localstorage\2.0.0\contentFiles\any\netstandard2.0\content\blazored.LocalStorage.js')">
+      <NuGetPackageId>Blazored.LocalStorage</NuGetPackageId>
+      <NuGetPackageVersion>2.0.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Private>False</Private>
+      <Link>content\blazored.LocalStorage.js</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)blazored.localstorage\2.0.0\contentFiles\any\netstandard2.0\content\blazored.LocalStorage.js.map" Condition="Exists('$(NuGetPackageRoot)blazored.localstorage\2.0.0\contentFiles\any\netstandard2.0\content\blazored.LocalStorage.js.map')">
+      <NuGetPackageId>Blazored.LocalStorage</NuGetPackageId>
+      <NuGetPackageVersion>2.0.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Private>False</Private>
+      <Link>content\blazored.LocalStorage.js.map</Link>
+    </Content>
+  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.blazor.mono\0.10.0-preview-20190325.1\build\netstandard1.0\Microsoft.AspNetCore.Blazor.Mono.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.blazor.mono\0.10.0-preview-20190325.1\build\netstandard1.0\Microsoft.AspNetCore.Blazor.Mono.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.blazor.build\3.0.0-preview4-19216-03\build\netstandard1.0\Microsoft.AspNetCore.Blazor.Build.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.blazor.build\3.0.0-preview4-19216-03\build\netstandard1.0\Microsoft.AspNetCore.Blazor.Build.props')" />

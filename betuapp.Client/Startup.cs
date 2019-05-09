@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Blazored.LocalStorage;
+using betuapp.Client.Service;
 
 namespace betuapp.Client
 {
@@ -7,11 +9,13 @@ namespace betuapp.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBlazoredLocalStorage();
+            services.AddSingleton<AppState>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)
         {
-            app.AddComponent<App>("app");
+                        app.AddComponent<App>("app");
         }
     }
 }

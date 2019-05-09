@@ -1,4 +1,5 @@
 betuapp.Shared.dll
+Blazored.LocalStorage.dll
 Microsoft.AspNetCore.Blazor.dll
 Microsoft.AspNetCore.Components.Browser.dll
 Microsoft.AspNetCore.Components.dll
@@ -8,9 +9,15 @@ Microsoft.JSInterop.dll
 Mono.Security.dll
 Mono.WebAssembly.Interop.dll
 mscorlib.dll
+Newtonsoft.Json.dll
 System.ComponentModel.Annotations.dll
 System.Core.dll
+System.Data.dll
 System.dll
 System.Net.Http.dll
+System.Numerics.dll
+System.Runtime.Serialization.dll
+System.Xml.dll
+System.Xml.Linq.dll
 betuapp.Client.pdb
 betuapp.Shared.pdb
