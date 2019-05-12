@@ -20,19 +20,9 @@ namespace betuapp.Server.Controllers
         }
 
         [HttpGet("[action]/{username}&{password}")]
-        public ReducedAccount Account(string username, string password)
+        public Account Account(string username, string password)
         {
-           var acc = Accounts().Where(acco => acco.Username == username && acco.Password == password).FirstOrDefault();
-        
-
-            return new ReducedAccount()
-            {
-                Email = acc.Email,
-                Firstname = acc.Firstname,
-                Lastname = acc.Lastname,
-                OwnedCash = acc.OwnedCash,
-                Username = acc.Username
-            };
+            return Accounts().Where(acco => acco.Username == username && acco.Password == password).FirstOrDefault();
         }
 
         [HttpPost("[action]")]

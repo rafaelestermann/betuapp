@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace BlazorCrud.Server.DataAccess
 {
-    public class BetDataService
+    public class AcceptanceCritereaService  
     {
-        BetContext db = new BetContext();
+        AcceptanceCritereaContext db = new AcceptanceCritereaContext();
 
         //To Get all Bets details   
-        public IEnumerable<ExtentedBet> GetAllBets()
+        public IEnumerable<AcceptanceCriterea> GetAllAcceptanceCriterasByBetID(long id)
         {
             try
             {
-                return db.Bet.Include(x => x.Challenger).Include(x => x.Challenged).ToList();
+                return db.AcceptanceCriterea.Where(x => x.BetId == id).ToList();
             }
             catch
             {
@@ -26,11 +26,11 @@ namespace BlazorCrud.Server.DataAccess
         }
 
         //To Add new Bet record     
-        public void AddBet(ExtentedBet Bet)
+        public void AddAcceptanceCriterea(AcceptanceCriterea acceptanceCriterea)
         {
             try
             {
-                db.Bet.Add(Bet);
+                db.AcceptanceCriterea.Add(acceptanceCriterea);
                 db.SaveChanges();
             }
             catch
@@ -40,11 +40,11 @@ namespace BlazorCrud.Server.DataAccess
         }
 
         //To Update the records of a particluar Bet    
-        public void UpdateBet(ExtentedBet Bet)
+        public void UpdateAcceptanceCriterea(AcceptanceCriterea acceptanceCriterea)
         {
             try
             {
-                db.Entry(Bet).State = EntityState.Modified;
+                db.Entry(acceptanceCriterea).State = EntityState.Modified;
                 db.SaveChanges();
             }
             catch
@@ -53,27 +53,14 @@ namespace BlazorCrud.Server.DataAccess
             }
         }
 
-        //Get the details of a particular Bet    
-        public ExtentedBet GetBetData(int id)
-        {
-            try
-            {
-                ExtentedBet Bet = db.Bet.Find(id);
-                return Bet;
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
+     
         //To Delete the record of a particular Bet    
-        public void DeleteBet(int id)
+        public void DeleteAcceptanceCriterea(int id)
         {
             try
             {
-                ExtentedBet emp = db.Bet.Find(id);
-                db.Bet.Remove(emp);
+                AcceptanceCriterea emp = db.AcceptanceCriterea.Find(id);
+                db.AcceptanceCriterea.Remove(emp);
                 db.SaveChanges();
             }
             catch

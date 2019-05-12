@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using betuapp.Shared;
 using Blazored.LocalStorage;
 using Microsoft.JSInterop;
-//using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json.Linq;
 
 namespace betuapp.Client.Service
@@ -48,7 +47,7 @@ namespace betuapp.Client.Service
 
         private async Task SaveToken(HttpResponseMessage response)
         {
-            var responseContent = await response.Content.ReadAsStringAsync();
+            //var responseContent = await response.Content.ReadAsStringAsync();
             //var jwt = Json.Deserialize<JwtSecurityToken>(responseContent);
 
             //await _localStorage.SetItemAsync("authToken", jwt);

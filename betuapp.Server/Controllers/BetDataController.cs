@@ -14,7 +14,7 @@ namespace betuapp.Server.Controllers
         BetDataService dataservice = new BetDataService();
 
         [HttpGet("[action]")]
-        public IEnumerable<Bet> Bets()
+        public IEnumerable<ExtentedBet> Bets()
         {
             return dataservice.GetAllBets();
         }

@@ -27,17 +27,16 @@ else
                 <tr>
                     <td>@bet.Name.</td>
                     <td>@bet.Description</td>
-                    <td>@bet.Challenged.Username</td>
                 </tr>
             }
         </tbody>
     </table>
 }
 @functions {
-    Bet[] bets;
+    ExtentedBet[] bets;
 
     protected override async Task OnInitAsync()
     {
-        bets = await Http.GetJsonAsync<Bet[]>("api/BetData/Bets");
+        bets = await Http.GetJsonAsync<ExtentedBet[]>("api/BetData/Bets");
     }
 }

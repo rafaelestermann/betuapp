@@ -9,6 +9,7 @@ C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betua
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Server.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\betuapp.Server.pdb
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\Blazored.LocalStorage.dll
+C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\JWT.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Blazor.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Blazor.Server.dll
@@ -53,4 +54,3 @@ C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betua
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.csproj.CopyComplete
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Server\obj\Debug\netcoreapp3.0\betuapp.Server.pdb
-C:\Users\rafae\source\repos\betuapp\betuapp.Server\bin\Debug\netcoreapp3.0\JWT.dll

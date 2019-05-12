@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace betuapp.Server.DataAccess
 {
-    public class BetContext : DbContext
+    public class AcceptanceCritereaContext : DbContext
     {
-        public virtual DbSet<ExtentedBet> Bet { get; set; }
+        public virtual DbSet<AcceptanceCriterea> AcceptanceCriterea { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
