@@ -1,7 +1,8 @@
+using betuapp.Client.Services.Contracts;
+using betuapp.Client.Services.Implementations;
+using betuapp.Client.States;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Blazored.LocalStorage;
-using betuapp.Client.Service;
 
 namespace betuapp.Client
 {
@@ -9,8 +10,8 @@ namespace betuapp.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddBlazoredLocalStorage();
-            services.AddSingleton<AppState>();
+            services.AddScoped<AuthenticationState>();
+            services.AddScoped<IAuthorizeApi, AuthorizeAPI>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)
