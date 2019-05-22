@@ -1,4 +1,10 @@
-﻿.container .row
+﻿.container .row .column-1 video
+{
+    width: 100%;
+    height: auto;
+}
+
+.container .row
 {
     display: flex;
     flex-direction: row;
