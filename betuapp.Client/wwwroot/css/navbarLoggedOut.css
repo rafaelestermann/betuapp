@@ -144,7 +144,7 @@ a {
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     height: 100px;
@@ -152,3 +152,4 @@ a {
     background-color: black;
     color: white;
     text-align: center;
+}

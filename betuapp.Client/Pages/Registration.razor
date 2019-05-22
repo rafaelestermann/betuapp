@@ -2,28 +2,21 @@
 @using Microsoft.AspNetCore.Components.Layouts
 @layout MainLayoutLoggedOut
 
+<header>
+    <link href="..//css/forms.css" rel="stylesheet" />
+</header>
 
-
-    <body style="background-color: red;">
-        <form action="/mybets">
-            First name:<br>
-            <input type="text" name="firstname" value="Mickey">
-            <br>
-            Last name:<br>
-            <input type="text" name="lastname" value="Mouse">
-            <br><br>
-            Username:<br>
-            <input type="text" name="username" value="mickey1999">
-            <br>
-            Email:<br>
-            <input type="text" name="email" value="123@123.ch">
-            <br>
-            Password:<br>
-            <input type="text" name="password" value="123">
-            <br>
-            Password Confirmation:<br>
-            <input type="text" name="passwordconfirm" value="123">
-            <br>
-            <input type="submit" value="Submit">
+<body style="background-color: red;" class="form-style-6">
+    <div class="form-style-6">
+        <h1>Create your free account</h1>
+        <form>
+            <input type="text" name="field1" placeholder="Firstname" />
+            <input type="text" name="field2" placeholder="Lastname" />
+            <input type="text" name="field2" placeholder="Username" />
+            <input type="email" name="field2" placeholder="Email" />
+            <input type="password" name="field2" placeholder="Password" />
+            <input type="password" name="field2" placeholder="Password Confirmation" />
+            <input type="submit" value="Sign Up" />
         </form>
-    </body>
+    </div>
+</body>

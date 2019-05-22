@@ -2,14 +2,17 @@
 @using Microsoft.AspNetCore.Components.Layouts
 @layout MainLayoutLoggedOut
 
-    <body style="background-color: yellow;">
-        <form action="/mybets">
-            Username:<br>
-            <input type="text" name="username" value="mickey1999">
-            <br>
-            Password:<br>
-            <input type="text" name="password" value="123">
-            <br>
-            <input type="submit" value="Submit">
+<header>
+    <link href="..//css/forms.css" rel="stylesheet" />
+</header>
+
+<body style="background-color: red;" class="form-style-6">
+    <div class="form-style-6">
+        <h1>Sign into your account</h1>
+        <form>
+            <input type="text" name="field1" placeholder="Username" />
+            <input type="password" name="field2" placeholder="Password" />
+            <input type="submit" value="Sign In" />
         </form>
-    </body>
+    </div>
+</body>
