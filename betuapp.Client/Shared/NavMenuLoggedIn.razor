@@ -1,5 +1,6 @@
 ﻿@inject betuapp.Client.States.AuthenticationState state
 <div>
+    <h1 style="color: white;">@name</h1>
     <img src="..//Logo/Logo_NoText.svg" style="height: 175px; vertical-align: middle;" />
     <ul class="nav flex-column">
         <li class="nav-item px-3">
@@ -24,6 +25,12 @@
 </div>
 
 @functions{
+    string name;
+    protected override void OnInit()
+    {
+        name = this.state.loggedInAccount.Username;
+    }
+
     async Task Login()
     {
         this.state.Logout();

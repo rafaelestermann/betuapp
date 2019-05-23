@@ -45,7 +45,6 @@ namespace betuapp.Client.States
 
         public async Task Logout()
         {
-            await _authorizeApi.Logout();
             loggedInAccount = null;
         }
     }
