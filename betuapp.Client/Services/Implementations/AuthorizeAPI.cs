@@ -17,42 +17,36 @@ namespace betuapp.Client.Services.Implementations
     public class AuthorizeAPI : IAuthorizeApi
     {
         private readonly HttpClient _httpClient;
-        public int number {get; set;}
         public AuthorizeAPI(HttpClient httpClient)
         {
-            _httpClient = httpClient;   
+            _httpClient = httpClient;
         }
 
-        public async Task<UserInfo> Login(LoginParameters loginParameters)
+        public async Task<Account> Login(LoginParameters loginParameters)
         {
-            number++;
-            var stringContent = new StringContent(Json.Serialize(loginParameters), Encoding.UTF8, "application/json");
-            var result = await _httpClient.PostAsync("api/AuthorizeData/Login", stringContent);
-            if (result.StatusCode == System.Net.HttpStatusCode.BadRequest) throw new Exception(await result.Content.ReadAsStringAsync());
-            result.EnsureSuccessStatusCode();
-
-            return Json.Deserialize<UserInfo>(await result.Content.ReadAsStringAsync());
+            var result = await _httpClient.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/Login", loginParameters);
+            return result;
         }
 
-        public async Task Logout()
+        public async Task<Account> Register(RegisterParameters registerParameters)
         {
-            var result = await _httpClient.PostAsync("api/Authorize/Logout", null);
-            result.EnsureSuccessStatusCode();
-        }
+            //VALIDATION
+            if (registerParameters.Password != registerParameters.PasswordConfirmation)
+            {
+                return new Account();
+            }
 
-        public async Task<UserInfo> Register(RegisterParameters registerParameters)
-        {
-            var stringContent = new StringContent(Json.Serialize(registerParameters), Encoding.UTF8, "application/json");
-            var result = await _httpClient.PostAsync("api/Authorize/Register", stringContent);
-            if (result.StatusCode == System.Net.HttpStatusCode.BadRequest) throw new Exception(await result.Content.ReadAsStringAsync());
-            result.EnsureSuccessStatusCode();
+            var account = new Account()
+            {
+                Email = registerParameters.Email,
+                Firstname = registerParameters.Firstname,
+                Lastname = registerParameters.Lastname,
+                Password = registerParameters.Password,
+                Username = registerParameters.UserName,
+                OwnedCash = 0
+            };
 
-            return Json.Deserialize<UserInfo>(await result.Content.ReadAsStringAsync());
-        }
-
-        public async Task<UserInfo> GetUserInfo()
-        {
-            var result = await _httpClient.GetJsonAsync<UserInfo>("api/Authorize/UserInfo");
+            var result = await _httpClient.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/CreateAccount", account);
             return result;
         }
     }

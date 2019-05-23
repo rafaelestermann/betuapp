@@ -1,10 +1,14 @@
-﻿using betuapp.Shared;
+﻿using betuapp.Server.Models;
+using betuapp.Shared;
 using BlazorCrud.Server.DataAccess;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace betuapp.Server.Controllers
 {
@@ -29,14 +33,21 @@ namespace betuapp.Server.Controllers
         public Account CreateAccount([FromBody]Account account)
         {
             dataservice.AddAccount(account);
-            return new Account();
+            return account;
         }
 
         [HttpPost("[action]")]
-        public Account DeleteAccount([FromBody]long id)
+        public Account Login([FromBody]LoginParameters parameters)
         {
-            dataservice.DeleteAccount(id);
-            return new Account();
+            var accounts = dataservice.GetAllAccounts();
+            if(!accounts.Any(x => x.Username == parameters.UserName && x.Password == parameters.Password))
+            {
+                return new Account();
+            }
+            else
+            {
+                return accounts.Where(x => x.Username == parameters.UserName && x.Password == parameters.Password).First();
+            }
         }
     }
 }

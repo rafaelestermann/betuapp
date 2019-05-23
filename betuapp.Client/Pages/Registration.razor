@@ -1,22 +1,59 @@
 ﻿@page "/registration"
+@using Microsoft.AspNetCore.Blazor.Services
 @using Microsoft.AspNetCore.Components.Layouts
+@using betuapp.Shared
 @layout MainLayoutLoggedOut
+@inject betuapp.Client.States.AuthenticationState state
+@inject IUriHelper uriHelper
 
 <header>
     <link href="..//css/forms.css" rel="stylesheet" />
 </header>
 
-<body style="background-color: red;" class="form-style-6">
-    <div class="form-style-6">
+<body>
+    <div class="formular">
         <h1>Create your free account</h1>
-        <form>
-            <input type="text" name="field1" placeholder="Firstname" />
-            <input type="text" name="field2" placeholder="Lastname" />
-            <input type="text" name="field2" placeholder="Username" />
-            <input type="email" name="field2" placeholder="Email" />
-            <input type="password" name="field2" placeholder="Password" />
-            <input type="password" name="field2" placeholder="Password Confirmation" />
-            <input type="submit" value="Sign Up" />
-        </form>
+        <input type="text" name="field1" placeholder="Firstname" bind="@firstname" />
+        <input type="text" name="field2" placeholder="Lastname" bind="@lastname" />
+        <input type="text" name="field2" placeholder="Username" bind="@username" />
+        <input type="email" name="field2" placeholder="Email" bind="@email" />
+        <input type="password" name="field2" placeholder="Password" bind="@password" />
+        <input type="password" name="field2" placeholder="Password Confirmation" bind="@passwordconfirmation" />
+        <p class="error">@errormessage</p>
+        <input type="submit" value="Sign Up" onclick=@Register />
     </div>
 </body>
+
+@functions
+{
+    string firstname;
+    string lastname;
+    string username;
+    string email;
+    string password;
+    string passwordconfirmation;
+    string errormessage;
+
+    async Task Register()
+    {
+        RegisterParameters parameter = new RegisterParameters()
+        {
+            Email = email,
+            Firstname = firstname,
+            Lastname = lastname,
+            Password = password,
+            PasswordConfirmation = passwordconfirmation,
+            UserName = username
+        };
+        await this.state.Register(parameter);
+        var regstrationSuccessful = this.state.JustRegisteredAccount.Username != null; 
+        if (!regstrationSuccessful)
+        {
+            errormessage = "there was an error";
+        }
+        else
+        {
+            this.uriHelper.NavigateTo("/AccountCreated");
+        }
+    }
+}

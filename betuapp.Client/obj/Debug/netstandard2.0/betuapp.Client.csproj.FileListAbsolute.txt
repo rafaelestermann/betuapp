@@ -119,3 +119,5 @@ C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razo
 C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razor\Shared\NavMenuLoggedOut.razor.g.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\RazorDeclaration\Pages\about.razor.g.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razor\Pages\about.razor.g.cs
+C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\RazorDeclaration\Pages\AccountSuccessfullyCreated.razor.g.cs
+C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razor\Pages\AccountSuccessfullyCreated.razor.g.cs

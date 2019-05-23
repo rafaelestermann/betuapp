@@ -8,9 +8,7 @@ namespace betuapp.Client.Services.Contracts
 {
     public interface IAuthorizeApi
     {
-        Task<UserInfo> Login(LoginParameters loginParameters);
-        Task<UserInfo> Register(RegisterParameters registerParameters);
-        Task Logout();
-        Task<UserInfo> GetUserInfo();
+        Task<Account> Login(LoginParameters loginParameters);
+        Task<Account> Register(RegisterParameters registerParameters);
     }
 }

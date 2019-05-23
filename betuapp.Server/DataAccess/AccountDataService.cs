@@ -28,15 +28,8 @@ namespace BlazorCrud.Server.DataAccess
         //To Add new Account record     
         public void AddAccount(Account Account)
         {
-            try
-            {
-                db.Account.Add(Account);
-                db.SaveChanges();
-            }
-            catch
-            {
-                throw;
-            }
+            db.Account.Add(Account);
+            db.SaveChanges();
         }
 
         //To Update the records of a particluar Account    

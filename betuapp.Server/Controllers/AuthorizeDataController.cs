@@ -10,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace betuapp.Server.Controllers
 {
-    [AllowAnonymous]
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    public class AuthorizeDataController : ControllerBase
+    [Route("api/[controller]")]
+    public class AuthorizeDataController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -24,7 +22,7 @@ namespace betuapp.Server.Controllers
             _signInManager = signInManager;
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public async Task<IActionResult> Login(LoginParameters parameters)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState.Values.SelectMany(state => state.Errors)
@@ -42,8 +40,8 @@ namespace betuapp.Server.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterParameters parameters)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Register([FromBody]RegisterParameters parameters)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState.Values.SelectMany(state => state.Errors)
                                                                         .Select(error => error.ErrorMessage)
@@ -68,7 +66,7 @@ namespace betuapp.Server.Controllers
             return Ok();
         }
 
-        [Authorize]
+   
         [HttpGet]
         public async Task<UserInfo> UserInfo()
         {

@@ -10,10 +10,10 @@ namespace betuapp.Client.States
 {
     public class AuthenticationState
     {
-        public int number { get; set; }
         private readonly IAuthorizeApi _authorizeApi;
         private readonly IJSRuntime _jsRuntime;
-        private UserInfo userInfo;
+        public Account loggedInAccount;
+        public Account JustRegisteredAccount;
 
         public AuthenticationState(IAuthorizeApi authorizeApi, IJSRuntime jsRuntime)
         {
@@ -23,33 +23,30 @@ namespace betuapp.Client.States
 
         public Task<bool> IsLoggedIn()
         {
-            return new Task<bool>(() => false);
-            //return _jsRuntime.InvokeAsync<bool>("Authorization_LoginCookieExists");
+            if(loggedInAccount != null)
+            {
+                return Task.FromResult(true);
+            }
+            else
+            {
+                return Task.FromResult(false);
+            }
         }
 
         public async Task Login(LoginParameters loginParameters)
         {
-            number++;
-               userInfo = await _authorizeApi.Login(loginParameters);
+            loggedInAccount = await _authorizeApi.Login(loginParameters);            
         }
 
         public async Task Register(RegisterParameters registerParameters)
         {
-            userInfo = await _authorizeApi.Register(registerParameters);
+            JustRegisteredAccount = await _authorizeApi.Register(registerParameters);         
         }
 
         public async Task Logout()
         {
             await _authorizeApi.Logout();
-            userInfo = null;
+            loggedInAccount = null;
         }
-
-        public async Task<UserInfo> GetUserInfo()
-        {
-            if (userInfo != null) return userInfo;
-            userInfo = await _authorizeApi.GetUserInfo();
-            return userInfo;
-        }
-
     }
 }

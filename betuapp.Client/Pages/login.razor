@@ -1,18 +1,47 @@
 ﻿@page "/login"
 @using Microsoft.AspNetCore.Components.Layouts
+@using Microsoft.AspNetCore.Blazor.Services
+@using betuapp.Shared
 @layout MainLayoutLoggedOut
-
+@inject betuapp.Client.States.AuthenticationState state
+@inject IUriHelper uriHelper
 <header>
     <link href="..//css/forms.css" rel="stylesheet" />
 </header>
 
-<body style="background-color: red;" class="form-style-6">
-    <div class="form-style-6">
+<body>
+    <div class="formular">
         <h1>Sign into your account</h1>
-        <form>
-            <input type="text" name="field1" placeholder="Username" />
-            <input type="password" name="field2" placeholder="Password" />
-            <input type="submit" value="Sign In" />
-        </form>
+        <input type="text" name="field1" placeholder="Username" bind=@username />
+        <input type="password" name="field2" placeholder="Password" bind=@password />
+        <p class="error">@errormessage</p>
+        <input type="submit" value="Sign In" onclick=@Login />
     </div>
 </body>
+
+@functions
+{
+    string username;
+    string password;
+    string errormessage;
+
+    async Task Login()
+    {
+        LoginParameters parameter = new LoginParameters()
+        {
+            UserName = username,
+            Password = password
+        };
+
+        await this.state.Login(parameter);
+        var loginSuccessful = this.state.loggedInAccount.Username != null; 
+        if (!loginSuccessful)
+        {
+            errormessage = "invalid username or email address, please try again!";
+        }
+        else
+        {            
+            this.uriHelper.NavigateTo("/MyBets");
+        }
+    }
+}
