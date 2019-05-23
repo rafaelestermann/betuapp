@@ -143,6 +143,10 @@ ul{
     text-align: center;
 }
 
+.aligncenterbottom {
+    text-align: center;
+}
+
 .formular input[type="submit"],
 .formular input[type="button"] {
     box-sizing: border-box;

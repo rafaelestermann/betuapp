@@ -1,5 +1,6 @@
-﻿<header class="header">
-    <img src="..//Logo/Logo_OnlyText.svg" style="vertical-align: middle;" class="logo"/>
+﻿@inject IUriHelper uriHelper
+<header class="header">
+    <img onclick=@ReloadPage src="..//Logo/Logo_OnlyText.svg" id="navLogo"/>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
@@ -9,6 +10,13 @@
         <li><a href="/registration">Sign Up</a></li>
     </ul>
 </header>
+
+@functions{
+    async Task ReloadPage()
+    {
+        this.uriHelper.NavigateTo("/");
+    }
+}
 
 
 
