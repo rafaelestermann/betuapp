@@ -1,8 +1,12 @@
 ﻿@inject betuapp.Client.States.AuthenticationState state
+@inject IUriHelper uriHelper
+
 <div>
-    <h1 style="color: white;">@name</h1>
-    <img src="..//Logo/Logo_NoText.svg" style="height: 175px; vertical-align: middle;" />
-    <ul class="nav flex-column">
+    <p class="aligncenter">
+        <img src="..//Logo/Logo_NoText.svg" style="height: 145px; width: 145px; margin-top: 30px" vertical-align: middle;" />
+    </p>
+
+    <ul>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="mybets" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> MyBets
@@ -19,9 +23,13 @@
             </NavLink>
         </li>
     </ul>
-    <form action="/">
-        <input type="submit" value="Sign Out" onclick="@Login" />
-    </form>
+    <p class="aligncenter">
+        <form>
+            <input type="submit" value="Sign Out" onclick=@Logout />
+        </form>
+    </p>
+
+
 </div>
 
 @functions{
@@ -31,8 +39,9 @@
         name = this.state.loggedInAccount.Username;
     }
 
-    async Task Login()
+    async Task Logout()
     {
         this.state.Logout();
+        this.uriHelper.NavigateTo("/");
     }
 }

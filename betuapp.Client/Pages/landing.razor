@@ -1,9 +1,9 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.Layouts
 @layout MainLayoutLoggedOut
-
+@inject IUriHelper uriHelper
 <head>
-    <link href="..//css/landing.css" rel="stylesheet"/>
+    <link href="..//css/landing.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -12,25 +12,32 @@
         <div class="row">
 
             <div class="column-1">
-                 <img src="..//logo/Logo_NoText.svg" class="icon-logo" alt="icon from bet u"/>
+                <img src="..//logo/Logo_NoText.svg" class="icon-logo" alt="icon from bet u" />
             </div>
 
             <div class="column-1">
-                 <img src="..//logo/Logo_OnlyText.svg" class="icon-text" alt="icon from bet u"/>
-                 <br>
-                 <a>easy, accessbile</a>
-                 <br>
-                 <button onclick="window.location.href='/registration'">Get Started</button>
+                <img src="..//logo/Logo_OnlyText.svg" class="icon-text" alt="icon from bet u" />
+                <br>
+                <a>easy, accessbile</a>
+                <br>
+                <button onclick="@GetStarted">Get Started</button>
             </div>
         </div>
 
         <div class="row">
             <div class="column-1">
                 <video autoplay="autoplay">
-                    <source src="..//video/betU.mp4"/>
+                    <source src="..//video/betU.mp4" />
                 </video>
             </div>
         </div>
     </div>
 </body>
 
+@functions{
+    async Task GetStarted()
+    {
+        this.uriHelper.NavigateTo("/registration");
+    }
+
+}

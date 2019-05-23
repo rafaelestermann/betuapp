@@ -131,3 +131,29 @@ app {
         display: block;
     }
 }
+
+li {
+    list-style-type: none;
+}
+ul{
+    width: 100%;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.formular input[type="submit"],
+.formular input[type="button"] {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: blue;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+}
