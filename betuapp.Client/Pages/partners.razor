@@ -1,5 +1,54 @@
 ﻿@page "/partners"
 @using Microsoft.AspNetCore.Components.Layouts
+@using betuapp.Shared
 @layout MainLayoutLoggedIn
+@inject HttpClient Http
+@inject betuapp.Client.States.AuthenticationState state
+@inject IUriHelper uriHelper
 
 <h1>Partners Page</h1>
+@if (partnerAccounts == null)
+{
+
+}
+
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fistname</th>
+                <th>Lastname</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in partnerAccounts)
+            {
+            <tr>
+                <td>@account.Firstname.</td>
+                <td>@account.Lastname</td>
+                <td>@account.Username</td>
+                <td>@account.Email</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@functions{
+    List<Account> partnerAccounts = new List<Account>();
+
+    protected override async Task OnInitAsync()
+    {
+        var loggedInAccountId = this.state.loggedInAccount.Id;
+        partnerAccounts = await Http.GetJsonAsync<List<Account>>("api/AccountData/GetAllPartnerAccountsByAccountId/" + loggedInAccountId);
+    }
+
+    void GoToDetail(long accountId)
+    {
+
+    }
+}

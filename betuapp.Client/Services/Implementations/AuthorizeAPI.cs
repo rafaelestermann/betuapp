@@ -24,7 +24,7 @@ namespace betuapp.Client.Services.Implementations
 
         public async Task<Account> Login(LoginParameters loginParameters)
         {
-            var result = await _httpClient.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/Login", loginParameters);
+            var result = await _httpClient.SendJsonAsync<Account>(HttpMethod.Post, "api/AccountData/Login", loginParameters);            
             return result;
         }
 

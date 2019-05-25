@@ -18,5 +18,25 @@ namespace betuapp.Server.Controllers
         {
             return dataservice.GetAllBets();
         }
+
+        [HttpPost("[action]")]
+        public ExtentedBet CreateBet([FromBody]ExtentedBet bet)
+        {
+            dataservice.AddBet(bet);
+            return bet;
+        }
+
+        [HttpPost("[action]")]
+        public ExtentedBet UpdateBet([FromBody]ExtentedBet bet)
+        {
+            dataservice.UpdateBet(bet);
+            return bet;
+        }
+
+        [HttpGet("[action]")]
+        public List<ExtentedBet> GetBetsByAccount([FromBody]long accountId)
+        {
+            return dataservice.GetAllBets().Where(x => x.Challenged.Id == accountId || x.Challenger.Id == accountId).ToList();
+        }
     }
 }

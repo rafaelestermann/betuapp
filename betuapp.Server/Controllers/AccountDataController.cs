@@ -16,11 +16,32 @@ namespace betuapp.Server.Controllers
     public class AccountDataController : Controller
     {
         AccountDataService dataservice = new AccountDataService();
+        BetDataService betDataService = new BetDataService();
 
         [HttpGet("[action]")]
         public IEnumerable<Account> Accounts()
         {
             return dataservice.GetAllAccounts();
+        }
+
+        [HttpGet("[action]/{id}")]
+        public IEnumerable<Account> GetAllPartnerAccountsByAccountId(long id)
+        {
+            List<Account> resultList = new List<Account>();
+            var bets = betDataService.GetAllBets().Where(x => x.Challenged.Id == id || x.Challenger.Id == id).ToList();
+            foreach(var bet in bets)
+            {
+                if(bet.Challenger.Id == id)
+                {
+                    resultList.Add(bet.Challenged);
+                }
+                else
+                {
+                    resultList.Add(bet.Challenger);
+                }
+            }
+
+            return resultList.Distinct();
         }
 
         [HttpGet("[action]/{username}&{password}")]
