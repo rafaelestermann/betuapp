@@ -1,0 +1,76 @@
+﻿@page "/accountdetail"
+@using Microsoft.AspNetCore.Components.Layouts
+@layout MainLayoutLoggedIn
+@inject betuapp.Client.States.AuthenticationState state
+
+<div id="BreadCrumb">
+    <a href="/account">AccountDetail</a>
+</div>
+
+<h1>Account Page</h1>
+<br />
+<table>
+    <tr>
+        <td><b>Firstname:</b></td>
+        <td></td>
+        <td></td>
+        <td>@Firstname</td>
+    </tr>
+    <tr>
+        <td><b>Lastname:</b></td>
+        <td></td>
+        <td></td>
+        <td>@Lastname</td>
+    </tr>
+    <tr>
+        <td><b>Username:</b></td>
+        <td></td>
+        <td></td>
+        <td>@Username</td>
+    </tr>
+    <tr>
+        <td><b>Email:</b></td>
+        <td></td>
+        <td></td>
+        <td>@Email</td>
+    </tr>
+    <tr>
+        <td><b>Bets Won:</b></td>
+        <td></td>
+        <td></td>
+        <td>@BetsWon</td>
+    </tr>
+    <tr>
+        <td><b>Bets Lost:</b></td>
+        <td></td>
+        <td></td>
+        <td>@BetsLost</td>
+    </tr>
+    <tr>
+        <td><b>Bets Open:</b></td>
+        <td></td>
+        <td></td>
+        <td>@BetsOpen</td>
+    </tr>
+</table>
+
+@functions{
+    public string Firstname;
+    public string Lastname;
+    public string Username;
+    public string Email;
+    public int BetsWon;
+    public int BetsLost;
+    public int BetsOpen;
+
+    protected override void OnInit()
+    {
+        Firstname = this.state.loggedInAccount.Firstname;
+        Lastname = this.state.loggedInAccount.Lastname;
+        Username = this.state.loggedInAccount.Username;
+        Email = this.state.loggedInAccount.Email;
+        BetsWon = 10;
+        BetsLost = 10;
+        BetsWon = 10;
+    }
+}

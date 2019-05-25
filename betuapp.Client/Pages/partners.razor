@@ -31,6 +31,7 @@ else
                 <td>@account.Lastname</td>
                 <td>@account.Username</td>
                 <td>@account.Email</td>
+                <td><button onclick=@(() => GoToDetail(account.Id))/></td>
             </tr>
             }
         </tbody>
@@ -49,6 +50,6 @@ else
 
     void GoToDetail(long accountId)
     {
-
+        this.uriHelper.NavigateTo("/accountdetail");
     }
 }
