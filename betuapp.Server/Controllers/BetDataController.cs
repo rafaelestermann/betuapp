@@ -33,10 +33,10 @@ namespace betuapp.Server.Controllers
             return bet;
         }
 
-        [HttpGet("[action]")]
-        public List<ExtentedBet> GetBetsByAccount([FromBody]long accountId)
-        {
-            return dataservice.GetAllBets().Where(x => x.Challenged.Id == accountId || x.Challenger.Id == accountId).ToList();
+        [HttpGet("[action]/{id}")]
+        public List<ExtentedBet> GetBetsByAccount(long id)
+        {     
+            return dataservice.GetAllBets().Where(x => x.Challenged.Id == id || x.Challenger.Id == id).ToList();
         }
     }
 }

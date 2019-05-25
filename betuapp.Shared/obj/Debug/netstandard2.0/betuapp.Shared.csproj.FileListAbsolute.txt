@@ -6,3 +6,4 @@ C:\Users\rafae\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betu
 C:\Users\rafae\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.AssemblyInfo.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.dll
 C:\Users\rafae\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.pdb
+C:\Users\rafae\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.csprojAssemblyReference.cache

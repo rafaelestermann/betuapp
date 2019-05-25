@@ -1,7 +1,10 @@
 ﻿@page "/accountdetail"
 @using Microsoft.AspNetCore.Components.Layouts
 @layout MainLayoutLoggedIn
-@inject betuapp.Client.States.DetailState  detailState
+@inject betuapp.Client.States.AuthenticationState authenticationState
+@inject betuapp.Client.States.DetailState detailState
+@using betuapp.Shared
+@inject HttpClient Http
 
 <div id="BreadCrumb">
     <a href="/account">AccountDetail</a>
@@ -62,14 +65,41 @@
     public int BetsLost;
     public int BetsOpen;
 
-    protected override void OnInit()
+    protected override async Task OnInitAsync()
     {
-        Firstname = this.detailState.ClickedAccountDetail.Firstname;
-        Lastname = this.detailState.ClickedAccountDetail.Lastname;
-        Username = this.detailState.ClickedAccountDetail.Username;
-        Email = this.detailState.ClickedAccountDetail.Email;
-        BetsWon = 10;
-        BetsLost = 10;
-        BetsWon = 10;
+        Firstname = this.authenticationState.loggedInAccount.Firstname;
+        Lastname = this.authenticationState.loggedInAccount.Lastname;
+        Username = this.authenticationState.loggedInAccount.Username;
+        Email = this.authenticationState.loggedInAccount.Email;
+
+        List<ExtentedBet> bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + this.detailState.ClickedAccountDetail.Id);
+
+        foreach (var bet in bets.Where(x => x.IstAbgeschlossen))
+        {
+            if (bet.Challenger.Id == this.detailState.ClickedAccountDetail.Id)
+            {
+                if (bet.ChallengerWon)
+                {
+                    BetsWon++;
+                }
+                else
+                {
+                    BetsLost++;
+                }
+            }
+            else
+            {
+                if (bet.ChallengerWon)
+                {
+                    BetsLost++;
+                }
+                else
+                {
+                    BetsWon++;
+                }
+            }
+        }
+
+        BetsOpen = bets.Where(x => x.IstAbgeschlossen == false).Count();
     }
 }

@@ -18,6 +18,7 @@ namespace betuapp.Shared
 
         public bool IstAbgeschlossen { get; set; }
 
+        public bool ChallengerWon { get; set; }
         public bool ConsentChallenger { get; set; }
 
         public bool ConsentChallenged { get; set; }
