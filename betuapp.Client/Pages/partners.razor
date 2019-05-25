@@ -3,7 +3,8 @@
 @using betuapp.Shared
 @layout MainLayoutLoggedIn
 @inject HttpClient Http
-@inject betuapp.Client.States.AuthenticationState state
+@inject betuapp.Client.States.AuthenticationState authenticationstate
+@inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
 <h1>Partners Page</h1>
@@ -26,13 +27,13 @@ else
         <tbody>
             @foreach (var account in partnerAccounts)
             {
-            <tr>
-                <td>@account.Firstname.</td>
-                <td>@account.Lastname</td>
-                <td>@account.Username</td>
-                <td>@account.Email</td>
-                <td><button onclick=@(() => GoToDetail(account.Id))/></td>
-            </tr>
+                <tr>
+                    <td>@account.Firstname.</td>
+                    <td>@account.Lastname</td>
+                    <td>@account.Username</td>
+                    <td>@account.Email</td>
+                    <td><button onclick=@(() => GoToDetail(account.Id)) /></td>
+                </tr>
             }
         </tbody>
     </table>
@@ -44,12 +45,13 @@ else
 
     protected override async Task OnInitAsync()
     {
-        var loggedInAccountId = this.state.loggedInAccount.Id;
+        var loggedInAccountId = this.authenticationstate.loggedInAccount.Id;
         partnerAccounts = await Http.GetJsonAsync<List<Account>>("api/AccountData/GetAllPartnerAccountsByAccountId/" + loggedInAccountId);
     }
 
     void GoToDetail(long accountId)
     {
+        detailState.ClickedAccountDetail = partnerAccounts.Where(x => x.Id == accountId).First();
         this.uriHelper.NavigateTo("/accountdetail");
     }
 }

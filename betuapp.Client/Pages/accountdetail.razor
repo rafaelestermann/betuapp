@@ -1,13 +1,12 @@
 ﻿@page "/accountdetail"
 @using Microsoft.AspNetCore.Components.Layouts
 @layout MainLayoutLoggedIn
-@inject betuapp.Client.States.AuthenticationState state
+@inject betuapp.Client.States.DetailState  detailState
 
 <div id="BreadCrumb">
     <a href="/account">AccountDetail</a>
 </div>
 
-<h1>Account Page</h1>
 <br />
 <table>
     <tr>
@@ -65,10 +64,10 @@
 
     protected override void OnInit()
     {
-        Firstname = this.state.loggedInAccount.Firstname;
-        Lastname = this.state.loggedInAccount.Lastname;
-        Username = this.state.loggedInAccount.Username;
-        Email = this.state.loggedInAccount.Email;
+        Firstname = this.detailState.ClickedAccountDetail.Firstname;
+        Lastname = this.detailState.ClickedAccountDetail.Lastname;
+        Username = this.detailState.ClickedAccountDetail.Username;
+        Email = this.detailState.ClickedAccountDetail.Email;
         BetsWon = 10;
         BetsLost = 10;
         BetsWon = 10;

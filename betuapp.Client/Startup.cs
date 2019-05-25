@@ -11,6 +11,7 @@ namespace betuapp.Client
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<AuthenticationState>();
+            services.AddScoped<DetailState>();
             services.AddScoped<IAuthorizeApi, AuthorizeAPI>();
         }
 
