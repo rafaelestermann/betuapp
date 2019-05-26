@@ -27,9 +27,9 @@ namespace BlazorCrud.Server.DataAccess
 
         //To Add new Bet record     
         public void AddBet(ExtentedBet Bet)
-        {
+        {   
             try
-            {
+            {           
                 db.Bet.Add(Bet);
                 db.SaveChanges();
             }

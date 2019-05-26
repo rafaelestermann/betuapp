@@ -123,3 +123,5 @@ C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razo
 C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razor\Pages\AccountSuccessfullyCreated.razor.g.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\RazorDeclaration\Pages\accountdetail.razor.g.cs
 C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razor\Pages\accountdetail.razor.g.cs
+C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\RazorDeclaration\Pages\createbet.razor.g.cs
+C:\Users\rafae\source\repos\betuapp\betuapp.Client\obj\Debug\netstandard2.0\Razor\Pages\createbet.razor.g.cs

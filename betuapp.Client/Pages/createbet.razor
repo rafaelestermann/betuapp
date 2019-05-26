@@ -1,0 +1,28 @@
+﻿@page "/createbet"
+@using Microsoft.AspNetCore.Blazor.Services
+@using Microsoft.AspNetCore.Components.Layouts
+@using betuapp.Shared
+@layout MainLayoutLoggedIn
+@inject betuapp.Client.States.AuthenticationState state
+@inject IUriHelper uriHelper
+@inject HttpClient Http
+
+<div id="BreadCrumb">
+    <a href="/mybets">MyBets</a>
+    <a href="/createbet">Create Bet</a>
+</div>
+
+<h1>Create Bet</h1>
+
+<button onclick="@Create">Create</button>
+
+@functions{
+    async Task Create()
+    {
+        ExtentedBet bet = new ExtentedBet();
+        bet.Challenger = this.state.loggedInAccount;
+        bet.Challenged = this.state.loggedInAccount;
+        var result = await Http.SendJsonAsync<ExtentedBet>(HttpMethod.Post, "api/BetData/CreateBet", bet);
+        this.uriHelper.NavigateTo("/MyBets");
+    }
+}

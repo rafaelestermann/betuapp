@@ -1,4 +1,15 @@
 ﻿@page "/mybets"
 @using Microsoft.AspNetCore.Components.Layouts
 @layout MainLayoutLoggedIn
+@inject IUriHelper uriHelper
 <h1>MyBets Page</h1>
+
+<button onclick="@CreateBet">Create Bet</button>
+
+@functions{
+    private void CreateBet()
+    {
+        this.uriHelper.NavigateTo("/createbet");
+    }
+
+}
