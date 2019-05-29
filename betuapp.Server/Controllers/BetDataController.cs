@@ -28,9 +28,9 @@ namespace betuapp.Server.Controllers
         }
 
         [HttpPost("[action]")]
-        public ExtentedBet CreateBet([FromBody]ExtentedBet bet)
+        public Bet CreateBet([FromBody]Bet bet)
         {
-            dataservice.AddBet(CreateBetByExtentedBet(bet));
+            dataservice.AddBet(bet);
             return bet;
         }
 

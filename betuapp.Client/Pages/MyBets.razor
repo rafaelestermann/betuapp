@@ -20,17 +20,19 @@ else
             <tr>
                 <th>Name</th>
                 <th>Description</th>
+                <th>DueDate</th>
                 <th>Tip</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var bet in bets)
             {
-                <tr>
-                    <td>@bet.Name.</td>
-                    <td>@bet.Description</td>
-                    <td>@bet.Tip</td>
-                </tr>
+            <tr>
+                <td>@bet.Name.</td>
+                <td>@bet.Description</td>
+                <td>@bet.DueDate</td>
+                <td>@bet.Tip</td>
+            </tr>
             }
         </tbody>
     </table>
@@ -45,6 +47,7 @@ else
         var loggedInAccountId = this.authenticationstate.loggedInAccount.Id;
         bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + loggedInAccountId);
     }
+
     private void CreateBet()
     {
         this.uriHelper.NavigateTo("/createbet");

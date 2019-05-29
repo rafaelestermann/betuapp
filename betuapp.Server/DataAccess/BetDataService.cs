@@ -27,7 +27,9 @@ namespace BlazorCrud.Server.DataAccess
 
         //To Add new Bet record     
         public void AddBet(Bet Bet)
-        {   
+        {
+       
+            Bet.Id = 0;
             try
             {           
                 db.Bet.Add(Bet);
@@ -35,9 +37,8 @@ namespace BlazorCrud.Server.DataAccess
             }
             catch
             {
-                throw;
             }
-        }
+        }       
 
         //To Update the records of a particluar Bet    
         public void UpdateBet(Bet Bet)
