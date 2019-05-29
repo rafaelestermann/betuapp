@@ -9,7 +9,7 @@ namespace betuapp.Server.DataAccess
 {
     public class BetContext : DbContext
     {
-        public virtual DbSet<ExtentedBet> Bet { get; set; }
+        public virtual DbSet<Bet> Bet { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -28,16 +28,17 @@ namespace betuapp.Server.Controllers
         public IEnumerable<Account> GetAllPartnerAccountsByAccountId(long id)
         {
             List<Account> resultList = new List<Account>();
-            var bets = betDataService.GetAllBets().Where(x => x.Challenged.Id == id || x.Challenger.Id == id).ToList();
-            foreach(var bet in bets)
+            var bets = betDataService.GetAllBets().Where(x => x.ChallengedId == id || x.ChallengerId == id).ToList();
+            var accounts = dataservice.GetAllAccounts();
+            foreach (var bet in bets)
             {
-                if(bet.Challenger.Id == id)
+                if(bet.ChallengerId == id)
                 {
-                    resultList.Add(bet.Challenged);
+                    resultList.Add(accounts.Where(x => x.Id == bet.ChallengedId).First());
                 }
                 else
                 {
-                    resultList.Add(bet.Challenger);
+                    resultList.Add(accounts.Where(x => x.Id == bet.ChallengerId).First());
                 }
             }
 

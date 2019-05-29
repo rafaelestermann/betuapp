@@ -1,12 +1,50 @@
 ﻿@page "/mybets"
-@using Microsoft.AspNetCore.Components.Layouts
+@using betuapp.Shared
 @layout MainLayoutLoggedIn
+@inject HttpClient Http
+@inject betuapp.Client.States.AuthenticationState authenticationstate
+@inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 <h1>MyBets Page</h1>
 
 <button onclick="@CreateBet">Create Bet</button>
+@if (bets == null)
+{
+
+}
+
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Tip</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bet in bets)
+            {
+                <tr>
+                    <td>@bet.Name.</td>
+                    <td>@bet.Description</td>
+                    <td>@bet.Tip</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 
 @functions{
+    List<ExtentedBet> bets = new List<ExtentedBet>();
+
+    protected override async Task OnInitAsync()
+    {
+        var loggedInAccountId = this.authenticationstate.loggedInAccount.Id;
+        bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + loggedInAccountId);
+    }
     private void CreateBet()
     {
         this.uriHelper.NavigateTo("/createbet");

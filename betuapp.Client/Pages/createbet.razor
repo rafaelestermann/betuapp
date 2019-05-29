@@ -22,6 +22,11 @@
         ExtentedBet bet = new ExtentedBet();
         bet.Challenger = this.state.loggedInAccount;
         bet.Challenged = this.state.loggedInAccount;
+        bet.Description = "bla";
+        bet.Name = "bal";
+        bet.Tip = 10;
+        bet.Evidence = "ajja";
+
         var result = await Http.SendJsonAsync<ExtentedBet>(HttpMethod.Post, "api/BetData/CreateBet", bet);
         this.uriHelper.NavigateTo("/MyBets");
     }

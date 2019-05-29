@@ -13,11 +13,11 @@ namespace BlazorCrud.Server.DataAccess
         BetContext db = new BetContext();
 
         //To Get all Bets details   
-        public IEnumerable<ExtentedBet> GetAllBets()
+        public IEnumerable<Bet> GetAllBets()
         {
             try
             {
-                return db.Bet.Include(x => x.Challenger).Include(x => x.Challenged).ToList();
+                return db.Bet.ToList();
             }
             catch
             {
@@ -26,7 +26,7 @@ namespace BlazorCrud.Server.DataAccess
         }
 
         //To Add new Bet record     
-        public void AddBet(ExtentedBet Bet)
+        public void AddBet(Bet Bet)
         {   
             try
             {           
@@ -40,7 +40,7 @@ namespace BlazorCrud.Server.DataAccess
         }
 
         //To Update the records of a particluar Bet    
-        public void UpdateBet(ExtentedBet Bet)
+        public void UpdateBet(Bet Bet)
         {
             try
             {
@@ -54,11 +54,11 @@ namespace BlazorCrud.Server.DataAccess
         }
 
         //Get the details of a particular Bet    
-        public ExtentedBet GetBetData(int id)
+        public Bet GetBetData(int id)
         {
             try
             {
-                ExtentedBet Bet = db.Bet.Find(id);
+                Bet Bet = db.Bet.Find(id);
                 return Bet;
             }
             catch
@@ -72,7 +72,7 @@ namespace BlazorCrud.Server.DataAccess
         {
             try
             {
-                ExtentedBet emp = db.Bet.Find(id);
+                Bet emp = db.Bet.Find(id);
                 db.Bet.Remove(emp);
                 db.SaveChanges();
             }
