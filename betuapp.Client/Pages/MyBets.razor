@@ -17,6 +17,7 @@
 
 else
 {
+    <h1>Open Bets</h1>
     <table class="table">
         <thead>
             <tr>
@@ -27,19 +28,44 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var bet in bets)
+            @foreach (var bet in bets.Where(x => !x.IstAbgeschlossen))
             {
+                <tr>
+                    <td>@bet.Name.</td>
+                    <td>@bet.Description</td>
+                    <td>@bet.DueDate</td>
+                    <td>@bet.Tip</td>
+                    <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>
+                    @if (bet.Challenger.Id == this.authenticationstate.loggedInAccount.Id)
+                    {
+                        <td><button onclick=@(() => GoToEdit(bet.Id)) />Edit</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h1>Closed Bets</h1>
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@bet.Name.</td>
-                <td>@bet.Description</td>
-                <td>@bet.DueDate</td>
-                <td>@bet.Tip</td>
-                <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>
-                @if (bet.Challenger.Id == this.authenticationstate.loggedInAccount.Id)
-                {
-                    <td><button onclick=@(() => GoToEdit(bet.Id)) />Edit</td>
-                }
+                <th>Name</th>
+                <th>Description</th>
+                <th>DueDate</th>
+                <th>Tip</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var bet in bets.Where(x => x.IstAbgeschlossen))
+            {
+                <tr>
+                    <td>@bet.Name.</td>
+                    <td>@bet.Description</td>
+                    <td>@bet.DueDate</td>
+                    <td>@bet.Tip</td>
+                    <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>              
+                </tr>
             }
         </tbody>
     </table>
@@ -61,7 +87,7 @@ else
         this.uriHelper.NavigateTo("/betdetail");
     }
 
-        void GoToEdit(long betId)
+    void GoToEdit(long betId)
     {
         this.detailState.ClickedBetDetail = this.bets.Where(x => x.Id == betId).First();
         this.uriHelper.NavigateTo("/betedit");

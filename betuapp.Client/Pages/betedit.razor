@@ -7,19 +7,90 @@
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
+<header>
+    <link href="..//css/createbet.css" rel="stylesheet" />
+</header>
+
 <div id="BreadCrumb">
     <a href="/mybets">MyBets</a>
     <a href="/betedit">Edit @detailState.ClickedBetDetail.Name</a>
 </div>
 
-<body>
-    <h1>@detailId</h1>
-</body>
+
+<h1>Create Bet</h1>
+<input type="text" name="email" placeholder="Name" bind=@Name />
+<input type="text" name="pass" placeholder="Description" bind=@Description />
+<input type="text" name="pass" placeholder="Acceptance Critereas" bind=@Critereas />
+<input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
+<input type="number" name="cpass" placeholder="Tip" bind=@Tip />
+<input type="text" name="input" value="@challenged.Username" readonly>
+<button onclick="@Save">Save Bet</button>
+<p class="error">@errormessage</p>
 
 @functions{
-private long detailId;
+    public string Name;
+    public string Description;
+    public string Critereas;
+    public long Tip;
+    public DateTime DueDate;
+    public string errormessage;
+    public Account challenged;
+
+
+    protected async Task SaveBet()
+    {
+        var result = await this.Http.SendJsonAsync<ExtentedBet>(HttpMethod.Post, "api/BetData/UpdateBet", this.detailState.ClickedBetDetail);
+        this.uriHelper.NavigateTo("/MyBets");
+    }
+
     protected override async Task OnInitAsync()
     {
-        detailId = this.detailState.ClickedBetDetail.Id;
+        
+        this.Name = this.detailState.ClickedBetDetail.Name;
+        this.Description = this.detailState.ClickedBetDetail.Description;
+        this.DueDate = this.detailState.ClickedBetDetail.DueDate;
+        this.Tip = this.detailState.ClickedBetDetail.Tip;
+        this.challenged = this.detailState.ClickedBetDetail.Challenged;
+    }
+
+        async Task Save()
+    {
+        //VALIDATION
+        if (!IsValidSqlDatetime(DueDate.ToString()))
+        {
+            errormessage = "DueDate is not valid";
+            return;
+        }
+
+        ExtentedBet bet = this.detailState.ClickedBetDetail;
+        bet.Description = Description;
+        bet.Name = Name;
+        bet.DueDate = DueDate;
+        bet.Tip = Tip;
+        bet.Id = this.detailState.ClickedBetDetail.Id;
+
+        var result = await Http.SendJsonAsync<ExtentedBet>(HttpMethod.Post, "api/BetData/UpdateBet", bet);
+        this.uriHelper.NavigateTo("/MyBets");
+    }
+
+    private bool IsValidSqlDatetime(string someval)
+    {
+        bool valid = false;
+        DateTime testDate = DateTime.MinValue;
+        DateTime minDateTime = DateTime.MaxValue;
+        DateTime maxDateTime = DateTime.MinValue;
+
+        minDateTime = new DateTime(1753, 1, 1);
+        maxDateTime = new DateTime(9999, 12, 31, 23, 59, 59, 997);
+
+        if (DateTime.TryParse(someval, out testDate))
+        {
+            if (testDate >= minDateTime && testDate <= maxDateTime)
+            {
+                valid = true;
+            }
+        }
+        return valid;
+
     }
 }

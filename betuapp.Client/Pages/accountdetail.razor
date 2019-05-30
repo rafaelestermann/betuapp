@@ -69,10 +69,10 @@
 
     protected override async Task OnInitAsync()
     {
-        Firstname = this.authenticationState.loggedInAccount.Firstname;
-        Lastname = this.authenticationState.loggedInAccount.Lastname;
-        Username = this.authenticationState.loggedInAccount.Username;
-        Email = this.authenticationState.loggedInAccount.Email;
+        Firstname = this.detailState.ClickedAccountDetail.Firstname;
+        Lastname = this.detailState.ClickedAccountDetail.Lastname;
+        Username = this.detailState.ClickedAccountDetail.Username;
+        Email = this.detailState.ClickedAccountDetail.Email;
 
         List<ExtentedBet> bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + this.detailState.ClickedAccountDetail.Id);
 
