@@ -5,6 +5,8 @@
 @inject betuapp.Client.States.AuthenticationState authenticationstate
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
+
+
 <h1>MyBets Page</h1>
 
 <button onclick="@CreateBet">Create Bet</button>
@@ -32,6 +34,11 @@ else
                 <td>@bet.Description</td>
                 <td>@bet.DueDate</td>
                 <td>@bet.Tip</td>
+                <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>
+                @if (bet.Challenger.Id == this.authenticationstate.loggedInAccount.Id)
+                {
+                    <td><button onclick=@(() => GoToEdit(bet.Id)) />Edit</td>
+                }
             </tr>
             }
         </tbody>
@@ -46,6 +53,18 @@ else
     {
         var loggedInAccountId = this.authenticationstate.loggedInAccount.Id;
         bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + loggedInAccountId);
+    }
+
+    void GoToDetail(long betId)
+    {
+        this.detailState.ClickedBetDetail = this.bets.Where(x => x.Id == betId).First();
+        this.uriHelper.NavigateTo("/betdetail");
+    }
+
+        void GoToEdit(long betId)
+    {
+        this.detailState.ClickedBetDetail = this.bets.Where(x => x.Id == betId).First();
+        this.uriHelper.NavigateTo("/betedit");
     }
 
     private void CreateBet()

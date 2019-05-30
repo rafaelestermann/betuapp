@@ -1,0 +1,25 @@
+﻿@page "/betedit"
+@using Microsoft.AspNetCore.Components.Layouts
+@using betuapp.Shared
+@layout MainLayoutLoggedIn
+@inject HttpClient Http
+@inject betuapp.Client.States.AuthenticationState authenticationstate
+@inject betuapp.Client.States.DetailState detailState
+@inject IUriHelper uriHelper
+
+<div id="BreadCrumb">
+    <a href="/mybets">MyBets</a>
+    <a href="/betedit">Edit @detailState.ClickedBetDetail.Name</a>
+</div>
+
+<body>
+    <h1>@detailId</h1>
+</body>
+
+@functions{
+private long detailId;
+    protected override async Task OnInitAsync()
+    {
+        detailId = this.detailState.ClickedBetDetail.Id;
+    }
+}
