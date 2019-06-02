@@ -17,14 +17,13 @@ namespace betuapp.Shared
         public long Tip { get; set; }
 
         public bool IstAbgeschlossen { get; set; }
-
         public bool ChallengerWon { get; set; }
-        public bool ConsentChallenger { get; set; }
-
-        public bool ConsentChallenged { get; set; }
+        public bool ChallengerWonChallenger { get; set; }
+        public bool ChallengerWonChallenged { get; set; }
         public Account Challenger { get; set; }
         public Account Challenged { get; set; }
-
+        public bool ConsentChallengedGiven { get; set; }
+        public bool ConsentChallengerGiven { get; set; }
 
     }
 }

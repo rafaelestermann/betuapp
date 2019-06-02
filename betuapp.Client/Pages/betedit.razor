@@ -45,7 +45,7 @@
 
     protected override async Task OnInitAsync()
     {
-        
+
         this.Name = this.detailState.ClickedBetDetail.Name;
         this.Description = this.detailState.ClickedBetDetail.Description;
         this.DueDate = this.detailState.ClickedBetDetail.DueDate;
@@ -53,7 +53,7 @@
         this.challenged = this.detailState.ClickedBetDetail.Challenged;
     }
 
-        async Task Save()
+    async Task Save()
     {
         //VALIDATION
         if (!IsValidSqlDatetime(DueDate.ToString()))

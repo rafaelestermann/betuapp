@@ -12,14 +12,144 @@
     <a href="/betdetail">Detail @detailState.ClickedBetDetail.Name</a>
 </div>
 
-<body>
-    <h1>@detailId</h1>
-</body>
+<input type="text" name="email" placeholder="Name" bind=@Name readonly />
+<input type="text" name="pass" placeholder="Description" bind=@Description readonly />
+<input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate readonly />
+<input type="number" name="cpass" placeholder="Tip" bind=@Tip readonly />
+<input type="text" name="input" value="@challenged.Username" readonly>
+<input type="text" name="input" value="@Evidence">
+
+@if (ConsentGiven == false)
+{
+    <button onclick="@GiveConsent">Give Consent</button>
+}
+else
+{
+    <button onclick="@GiveNotConsent">Give Consent not</button>
+    <h3>consent:</h3>
+    <div>
+        <input type="checkbox" bind="@consentTrue" /><br />
+        <label for="scales">challenger won</label>
+    </div>
+
+    <div>
+        <input type="checkbox" bind="@consentFalse" /><br />
+        <label for="scales">challenged won</label>
+    </div>
+}
+<button onclick="@Save">Save and Back</button>
+<p class="error">@errormessage</p>
 
 @functions{
-private long detailId;
+    public string errormessage;
+    public string Name;
+    public string Description;
+    public DateTime DueDate;
+    public long Tip;
+    public Account challenged;
+    public string Evidence;
+    public bool consentTrue;
+    public bool consentFalse;
+    public bool ConsentGiven;
+
+    async Task GiveConsent()
+    {
+        ConsentGiven = true;
+    }
+    async Task GiveNotConsent()
+    {
+        ConsentGiven = false;
+    }
+
     protected override async Task OnInitAsync()
     {
-        detailId = this.detailState.ClickedBetDetail.Id;
+        this.Name = this.detailState.ClickedBetDetail.Name;
+        this.Description = this.detailState.ClickedBetDetail.Description;
+        this.DueDate = this.detailState.ClickedBetDetail.DueDate;
+        this.Tip = this.detailState.ClickedBetDetail.Tip;
+        this.challenged = this.detailState.ClickedBetDetail.Challenged;
+
+        if (this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
+        {
+            ConsentGiven = this.detailState.ClickedBetDetail.ConsentChallengerGiven;
+            if (this.detailState.ClickedBetDetail.ConsentChallengerGiven)
+            {
+                consentTrue = (this.detailState.ClickedBetDetail.ChallengerWonChallenger == true);
+                consentFalse = !consentTrue;
+            }
+        }
+        else
+        {
+            ConsentGiven = this.detailState.ClickedBetDetail.ConsentChallengedGiven;
+            if (this.detailState.ClickedBetDetail.ConsentChallengedGiven)
+            {
+                consentTrue = (this.detailState.ClickedBetDetail.ChallengerWonChallenged == true);
+                consentFalse = !consentTrue;
+            }
+        }
+    }
+
+    async Task Save()
+    {
+        if (ConsentGiven)
+        {
+            if (consentFalse == true && consentTrue == true)
+            {
+                errormessage = "invalid consent";
+                return;
+            }
+            if (consentFalse == false && consentTrue == false)
+            {
+                errormessage = "invalid consent";
+                return;
+            }
+        }
+
+        var bet = this.detailState.ClickedBetDetail;
+        bet.Evidence = this.Evidence;
+
+        if(this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
+        {
+            bet.ConsentChallengerGiven = ConsentGiven;
+        }
+        else
+        {
+            bet.ConsentChallengedGiven = ConsentGiven;
+        }
+
+        if (this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id && ConsentGiven)
+        {
+            bet.ChallengerWonChallenger = this.consentTrue;
+            bet.ConsentChallengerGiven = true;
+        }
+        if (this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenged.Id && ConsentGiven)
+        {
+            bet.ChallengerWonChallenged = this.consentTrue;
+            bet.ConsentChallengedGiven = true;
+        }
+
+        if (bet.ChallengerWonChallenger == true && bet.ChallengerWonChallenger == bet.ChallengerWonChallenged && bet.ConsentChallengerGiven && bet.ConsentChallengedGiven)
+        {
+            bet.IstAbgeschlossen = true;
+            bet.ChallengerWon = true;
+        }
+        if (bet.ChallengerWonChallenger == false && bet.ChallengerWonChallenger == bet.ChallengerWonChallenged && bet.ConsentChallengedGiven && bet.ConsentChallengerGiven)
+        {
+            bet.IstAbgeschlossen = true;
+            bet.ChallengerWon = false;
+        }
+
+        if(bet.ConsentChallengedGiven != true || bet.ConsentChallengerGiven != true)
+        {
+            bet.IstAbgeschlossen = false;
+        }
+
+        if(bet.ChallengerWonChallenger != bet.ChallengerWonChallenged)
+        {
+            bet.IstAbgeschlossen = false;
+        }
+
+        var result = await Http.SendJsonAsync<ExtentedBet>(HttpMethod.Post, "api/BetData/UpdateBet", bet);
+        this.uriHelper.NavigateTo("/MyBets");
     }
 }

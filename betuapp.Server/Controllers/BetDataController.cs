@@ -58,9 +58,8 @@ namespace betuapp.Server.Controllers
             var bet = new Bet
             {
                 Id = extentedBet.Id,
-                ChallengerWon = extentedBet.ChallengerWon,
-                ConsentChallenged = extentedBet.ConsentChallenged,
-                ConsentChallenger = extentedBet.ConsentChallenger,
+                ChallengerWonChallenged = extentedBet.ChallengerWonChallenged,
+                ChallengerWonChallenger = extentedBet.ChallengerWonChallenger,
                 Description = extentedBet.Description,
                 DueDate = extentedBet.DueDate,
                 Evidence = extentedBet.Evidence,
@@ -68,7 +67,10 @@ namespace betuapp.Server.Controllers
                 Name = extentedBet.Name,
                 Tip = extentedBet.Tip,
                 ChallengedId = extentedBet.Challenged.Id,
-                ChallengerId = extentedBet.Challenger.Id
+                ChallengerId = extentedBet.Challenger.Id,
+                ConsentChallengerGiven = extentedBet.ConsentChallengerGiven,
+                ConsentChallengedGiven = extentedBet.ConsentChallengedGiven
+                
             };
 
             return bet;
@@ -79,15 +81,16 @@ namespace betuapp.Server.Controllers
             var extendetBet = new ExtentedBet
             {
                 Id = bet.Id,
-                ChallengerWon = bet.ChallengerWon,
-                ConsentChallenged = bet.ConsentChallenged,
-                ConsentChallenger = bet.ConsentChallenger,
+                ChallengerWonChallenger = bet.ChallengerWonChallenger,
+                ChallengerWonChallenged = bet.ChallengerWonChallenged,
                 Description = bet.Description,
                 DueDate = bet.DueDate,
                 Evidence = bet.Evidence,
                 IstAbgeschlossen = bet.IstAbgeschlossen,
                 Name = bet.Name,
-                Tip = bet.Tip
+                Tip = bet.Tip,
+                ConsentChallengedGiven = bet.ConsentChallengedGiven,
+                ConsentChallengerGiven = bet.ConsentChallengerGiven
             };
 
             extendetBet.Challenger = accounts.Where(x => x.Id == bet.ChallengerId).First();
