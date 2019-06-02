@@ -69,8 +69,8 @@ namespace betuapp.Server.Controllers
                 ChallengedId = extentedBet.Challenged.Id,
                 ChallengerId = extentedBet.Challenger.Id,
                 ConsentChallengerGiven = extentedBet.ConsentChallengerGiven,
-                ConsentChallengedGiven = extentedBet.ConsentChallengedGiven,
-                ChallengerWon = extentedBet.ChallengerWon                
+                ConsentChallengedGiven = extentedBet.ConsentChallengedGiven
+                
             };
 
             return bet;
@@ -90,8 +90,7 @@ namespace betuapp.Server.Controllers
                 Name = bet.Name,
                 Tip = bet.Tip,
                 ConsentChallengedGiven = bet.ConsentChallengedGiven,
-                ConsentChallengerGiven = bet.ConsentChallengerGiven,
-                ChallengerWon = bet.ChallengerWon
+                ConsentChallengerGiven = bet.ConsentChallengerGiven
             };
 
             extendetBet.Challenger = accounts.Where(x => x.Id == bet.ChallengerId).First();
