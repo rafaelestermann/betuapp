@@ -15,7 +15,7 @@ namespace betuapp.Server.DataAccess
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-DMNQJI0\SQLEXPRESS;Initial Catalog=betudatabase;Integrated Security=True;");
+                optionsBuilder.UseSqlServer(@"Server=tcp:betuserver.database.windows.net,1433;Initial Catalog=betudatabase;Persist Security Info=False;User ID=admin123;Password=Waldweg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
     }
