@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="BetU20190422021417" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\rafae\\source\\repos\\betuapp\\betuapp\.Server\\obj\\Release\\netcoreapp3\.0\\win-x86\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

@@ -1,0 +1,96 @@
+﻿.formular {
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 16px;
+}
+
+    .formular h1 {
+        background: lightgray;
+        padding: 20px 0;
+        font-size: 140%;
+        text-align: center;
+        color: black;
+        font-weight: 600;
+        margin: -16px -16px 16px -16px;
+    }
+
+    .formular input[type="text"],
+    .formular input[type="date"],
+    .formular input[type="datetime"],
+    .formular input[type="email"],
+    .formular input[type="number"],
+    .formular input[type="search"],
+    .formular input[type="time"],
+    .formular input[type="url"],
+    .formular input[type="password"],
+    .formular textarea,
+    .formular select {
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        background: #fff;
+        margin-bottom: 4%;
+        border: 1px solid #ccc;
+        padding: 3%;
+        color: #555;
+        font: 95% Arial, Helvetica, sans-serif;
+    }
+
+        .formular input[type="text"]:focus,
+        .formular input[type="date"]:focus,
+        .formular input[type="datetime"]:focus,
+        .formular input[type="email"]:focus,
+        .formular input[type="number"]:focus,
+        .formular input[type="search"]:focus,
+        .formular input[type="time"]:focus,
+        .formular input[type="url"]:focus,
+        .formular input[type="password"]:focus,
+        .formular textarea:focus,
+        .formular select:focus {
+            box-shadow: 0 0 5px blue;
+            padding: 3%;
+            border: 1px solid #43D1AF;
+        }
+
+    .formular input[type="submit"],
+    .formular input[type="button"] {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        padding: 3%;
+        background: blue;
+        border-bottom: 2px solid #30C29E;
+        border-top-style: none;
+        border-right-style: none;
+        border-left-style: none;
+        color: #fff;
+    }
+
+        .formular input[type="submit"]:hover,
+        .formular input[type="button"]:hover {
+            background: #2EBC99;
+        }
+
+
+.error {
+    color: red;
+    font-size: 12px;
+    font-weight: lighter;
+    font-style: initial;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding: 0px;
+}
+
+.success{
+    color: green;
+    margin-left: 25px;
+}
