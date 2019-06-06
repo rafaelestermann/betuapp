@@ -9,7 +9,7 @@
 
 <h1>MyBets Page</h1>
 
-<button onclick="@CreateBet">Create Bet</button>
+<button onclick="@CreateBet" style="float:right;">Create Bet</button>
 @if (bets == null)
 {
 
@@ -30,17 +30,17 @@ else
         <tbody>
             @foreach (var bet in bets.Where(x => !x.IstAbgeschlossen))
             {
-                <tr>
-                    <td>@bet.Name.</td>
-                    <td>@bet.Description</td>
-                    <td>@bet.DueDate</td>
-                    <td>@bet.Tip</td>
-                    <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>
-                    @if (bet.Challenger.Id == this.authenticationstate.loggedInAccount.Id)
-                    {
-                        <td><button onclick=@(() => GoToEdit(bet.Id)) />Edit</td>
-                    }
-                </tr>
+            <tr>
+                <td>@bet.Name.</td>
+                <td>@bet.Description</td>
+                <td>@bet.DueDate</td>
+                <td>@bet.Tip</td>
+                <td><button onclick=@(() => GoToDetail(bet.Id))>Detail</button></td>
+                @if (bet.Challenger.Id == this.authenticationstate.loggedInAccount.Id)
+                {
+                    <td><button onclick=@(() => GoToEdit(bet.Id))>Edit</button></td>
+                }
+            </tr>
             }
         </tbody>
     </table>
@@ -59,13 +59,13 @@ else
         <tbody>
             @foreach (var bet in bets.Where(x => x.IstAbgeschlossen))
             {
-                <tr>
-                    <td>@bet.Name.</td>
-                    <td>@bet.Description</td>
-                    <td>@bet.DueDate</td>
-                    <td>@bet.Tip</td>
-                    <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>              
-                </tr>
+            <tr>
+                <td>@bet.Name.</td>
+                <td>@bet.Description</td>
+                <td>@bet.DueDate</td>
+                <td>@bet.Tip</td>
+                <td><button onclick=@(() => GoToDetail(bet.Id))>Detail</button></td>
+            </tr>
             }
         </tbody>
     </table>
