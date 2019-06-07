@@ -17,83 +17,103 @@
 </div>
 
 <h1>Create Bet</h1>
-<input type="text" name="email" placeholder="Name" bind=@Name />
-<input type="text" name="pass" placeholder="Description" bind=@Description />
-<input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
-<input type="number" name="cpass" placeholder="Tip" bind=@Tip />
-<select bind="@selectedChallenged">
-    <option>Select Challenged</option>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Name</h5>
+    <input type="text" name="email" placeholder="Name" bind=@Name />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Description</h5>
+    <input type="text" name="pass" placeholder="Description" bind=@Description />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">DueDate</h5>
+    <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Tip</h5>
+    <input type="number" name="cpass" placeholder="Tip" bind=@Tip />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Challenged Person</h5>
+    <select bind="@selectedChallenged">
+        <option>Select Challenged</option>
 
-    @foreach (var acco in challengeableAccounts)
-    {
-        <option value="@acco.Id">@(acco.Firstname + " " + acco.Lastname)</option>
-    }
-</select>
-<button onclick="@Create">Create</button>
-<p class="error">@errormessage</p>
-
-@functions{
-    public List<Account> challengeableAccounts = new List<Account>();
-    public string Name;
-    public string Description;
-    public long Tip;
-    public DateTime DueDate;
-    public string errormessage;
-    public long? selectedChallenged;
-
-    async Task Create()
-    {
-        //VALIDATION
-        if (!IsValidSqlDatetime(DueDate.ToString()))
+        @foreach (var acco in challengeableAccounts)
         {
-            errormessage = "DueDate is not valid";
-            return;
+            <option value="@acco.Id">@(acco.Firstname + " " + acco.Lastname)</option>
         }
+    </select>
+</div>
+<div class="new_line">
+    <p class="error">@errormessage</p>
+</div>
+    <div class="new_line">
+        <button onclick="@Create">Create</button>
+    </div>
 
-        if (selectedChallenged == null)
+
+    @functions{
+        public List<Account> challengeableAccounts = new List<Account>();
+        public string Name;
+        public string Description;
+        public long Tip;
+        public DateTime DueDate;
+        public string errormessage;
+        public long? selectedChallenged;
+
+        async Task Create()
         {
-            errormessage = "Challenged is not selected";
-            return;
-        }
-
-        Bet bet = new Bet();
-        bet.ChallengerId = this.state.loggedInAccount.Id;
-        bet.ChallengedId = selectedChallenged.Value;
-        bet.Description = Description;
-        bet.Name = Name;
-        bet.DueDate = DueDate;
-        bet.Tip = Tip;
-
-        var result = await Http.SendJsonAsync<Bet>(HttpMethod.Post, "api/BetData/CreateBet", bet);
-        this.uriHelper.NavigateTo("/MyBets");
-    }
-
-    protected override async Task OnInitAsync()
-    {
-        DueDate = DateTime.Now;
-        var loggedInAccountId = this.state.loggedInAccount.Id;
-        challengeableAccounts = await Http.GetJsonAsync<List<Account>>("api/AccountData/Accounts");
-        challengeableAccounts = challengeableAccounts.Where(x => x.Id != loggedInAccountId).ToList();
-    }
-
-    private bool IsValidSqlDatetime(string someval)
-    {
-        bool valid = false;
-        DateTime testDate = DateTime.MinValue;
-        DateTime minDateTime = DateTime.MaxValue;
-        DateTime maxDateTime = DateTime.MinValue;
-
-        minDateTime = new DateTime(1753, 1, 1);
-        maxDateTime = new DateTime(9999, 12, 31, 23, 59, 59, 997);
-
-        if (DateTime.TryParse(someval, out testDate))
-        {
-            if (testDate >= minDateTime && testDate <= maxDateTime)
+            //VALIDATION
+            if (!IsValidSqlDatetime(DueDate.ToString()))
             {
-                valid = true;
+                errormessage = "DueDate is not valid";
+                return;
             }
-        }
-        return valid;
 
+            if (selectedChallenged == null)
+            {
+                errormessage = "Challenged is not selected";
+                return;
+            }
+
+            Bet bet = new Bet();
+            bet.ChallengerId = this.state.loggedInAccount.Id;
+            bet.ChallengedId = selectedChallenged.Value;
+            bet.Description = Description;
+            bet.Name = Name;
+            bet.DueDate = DueDate;
+            bet.Tip = Tip;
+
+            var result = await Http.SendJsonAsync<Bet>(HttpMethod.Post, "api/BetData/CreateBet", bet);
+            this.uriHelper.NavigateTo("/MyBets");
+        }
+
+        protected override async Task OnInitAsync()
+        {
+            DueDate = DateTime.Now;
+            var loggedInAccountId = this.state.loggedInAccount.Id;
+            challengeableAccounts = await Http.GetJsonAsync<List<Account>>("api/AccountData/Accounts");
+            challengeableAccounts = challengeableAccounts.Where(x => x.Id != loggedInAccountId).ToList();
+        }
+
+        private bool IsValidSqlDatetime(string someval)
+        {
+            bool valid = false;
+            DateTime testDate = DateTime.MinValue;
+            DateTime minDateTime = DateTime.MaxValue;
+            DateTime maxDateTime = DateTime.MinValue;
+
+            minDateTime = new DateTime(1753, 1, 1);
+            maxDateTime = new DateTime(9999, 12, 31, 23, 59, 59, 997);
+
+            if (DateTime.TryParse(someval, out testDate))
+            {
+                if (testDate >= minDateTime && testDate <= maxDateTime)
+                {
+                    valid = true;
+                }
+            }
+            return valid;
+
+        }
     }
-}

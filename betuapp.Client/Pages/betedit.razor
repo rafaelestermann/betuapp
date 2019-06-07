@@ -18,14 +18,33 @@
 
 
 <h1>Create Bet</h1>
-<input type="text" name="email" placeholder="Name" bind=@Name />
-<input type="text" name="pass" placeholder="Description" bind=@Description />
-<input type="text" name="pass" placeholder="Acceptance Critereas" bind=@Critereas />
-<input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
-<input type="number" name="cpass" placeholder="Tip" bind=@Tip />
-<input type="text" name="input" value="@challenged.Username" readonly>
-<button onclick="@Save">Save Bet</button>
-<p class="error">@errormessage</p>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Name</h5>
+    <input type="text" name="email" placeholder="Name" bind=@Name />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Description</h5>
+    <input type="text" name="pass" placeholder="Description" bind=@Description />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">DueDate</h5>
+    <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Tip</h5>
+    <input type="number" name="cpass" placeholder="Tip" bind=@Tip />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Challenged Person</h5>
+    <input type="text" name="input" value="@challenged.Username" readonly>
+</div>
+<div class="new_line">
+    <p class="error">@errormessage</p>
+</div>
+<div class="new_line">
+    <button onclick="@Save">Save Bet</button>
+</div>
+
 
 @functions{
     public string Name;

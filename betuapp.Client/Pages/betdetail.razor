@@ -7,38 +7,66 @@
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
+<header>
+    <link href="..//css/createbet.css" rel="stylesheet" />
+</header>
+
 <div id="BreadCrumb">
     <a href="/mybets">MyBets</a>
     <a href="/betdetail">Detail @detailState.ClickedBetDetail.Name</a>
 </div>
 
-<input type="text" name="email" placeholder="Name" bind=@Name readonly />
-<input type="text" name="pass" placeholder="Description" bind=@Description readonly />
-<input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate readonly />
-<input type="number" name="cpass" placeholder="Tip" bind=@Tip readonly />
-<input type="text" name="input" value="@challenged.Username" readonly>
-<input type="text" name="input" value="@Evidence">
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Name</h5>
+    <input type="text" name="email" placeholder="Name" bind=@Name readonly />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Description</h5>
+    <input type="text" name="pass" placeholder="Description" bind=@Description readonly />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">DueDate</h5>
+    <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate readonly />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Tip</h5>
+    <input type="number" name="cpass" placeholder="Tip" bind=@Tip readonly />
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Challenged Person</h5>
+    <input type="text" name="input" value="@challenged.Username" readonly>
+</div>
+<div class="new_line">
+    <h5 style="margin-bottom:0px;">Evidence</h5>
+    <input type="text" name="input" value="@Evidence">
+</div>
+<div class="new_line">
+    @if (ConsentGiven == false)
+    {
+        <button onclick="@GiveConsent">Give Consent</button>
+    }
+    else
+    {
+        <button onclick="@GiveNotConsent">Give Consent not</button>
+        <h3>consent:</h3>
+        <div>
+            <input type="checkbox" bind="@consentTrue" /><br />
+            <label for="scales">challenger won</label>
+        </div>
 
-@if (ConsentGiven == false)
-{
-    <button onclick="@GiveConsent">Give Consent</button>
-}
-else
-{
-    <button onclick="@GiveNotConsent">Give Consent not</button>
-    <h3>consent:</h3>
-    <div>
-        <input type="checkbox" bind="@consentTrue" /><br />
-        <label for="scales">challenger won</label>
-    </div>
+        <div>
+            <input type="checkbox" bind="@consentFalse" /><br />
+            <label for="scales">challenged won</label>
+        </div>
+    }
+</div>
+<div class="new_line">
+    <p class="error">@errormessage</p>
+</div>
+<div class="new_line">
+    <button onclick="@Save">Save and Back</button>
+</div>
 
-    <div>
-        <input type="checkbox" bind="@consentFalse" /><br />
-        <label for="scales">challenged won</label>
-    </div>
-}
-<button onclick="@Save">Save and Back</button>
-<p class="error">@errormessage</p>
 
 @functions{
     public string errormessage;
@@ -108,7 +136,7 @@ else
         var bet = this.detailState.ClickedBetDetail;
         bet.Evidence = this.Evidence;
 
-        if(this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
+        if (this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
         {
             bet.ConsentChallengerGiven = ConsentGiven;
         }
@@ -139,12 +167,12 @@ else
             bet.ChallengerWon = false;
         }
 
-        if(bet.ConsentChallengedGiven != true || bet.ConsentChallengerGiven != true)
+        if (bet.ConsentChallengedGiven != true || bet.ConsentChallengerGiven != true)
         {
             bet.IstAbgeschlossen = false;
         }
 
-        if(bet.ChallengerWonChallenger != bet.ChallengerWonChallenged)
+        if (bet.ChallengerWonChallenger != bet.ChallengerWonChallenged)
         {
             bet.IstAbgeschlossen = false;
         }
