@@ -7,3 +7,13 @@
     margin-top: 0px;
     padding: 0px;
 }
+
+div {
+    float: left;
+    margin-right: 5px;
+}
+
+.new_line {
+    margin-bottom: 15px;
+    clear: both;
+}
