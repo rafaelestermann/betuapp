@@ -83,3 +83,11 @@
     color: white;
     text-align: center;
 }
+
+
+#navLogo {
+    vertical-align: middle;
+    height: 50px;
+    top: 20px;
+    margin-left: 10px;
+}
