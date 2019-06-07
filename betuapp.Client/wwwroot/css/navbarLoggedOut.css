@@ -2,6 +2,7 @@
     position: fixed;
     width: 100%;
     z-index: 3;
+    background-color: white;
 }
 
 .header ul {
@@ -39,6 +40,7 @@
     height: 18px;
     position: relative;
     width: 18px;
+    background-color: black;
 }
 
 .header .menu-btn {
