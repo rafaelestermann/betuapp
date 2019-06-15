@@ -7,9 +7,15 @@
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
-<div id="BreadCrumb">
-    <a href="/mybets">MyBets</a>
-    <a href="/betdetail">Detail @detailState.ClickedBetDetail.Name</a>
+<head>
+    <link href="..//css/general.css" rel="stylesheet" />
+</head>
+
+
+<div>
+    <a id="breadCrumbText" href="/mybets">MyBets</a>
+    <a id="breadCrumbText">/</a>
+    <a href="/betdetail">@detailState.ClickedBetDetail.Name</a>
 </div>
 
 <input type="text" name="email" placeholder="Name" bind=@Name readonly />
@@ -108,7 +114,7 @@ else
         var bet = this.detailState.ClickedBetDetail;
         bet.Evidence = this.Evidence;
 
-        if(this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
+        if (this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
         {
             bet.ConsentChallengerGiven = ConsentGiven;
         }
@@ -139,12 +145,12 @@ else
             bet.ChallengerWon = false;
         }
 
-        if(bet.ConsentChallengedGiven != true || bet.ConsentChallengerGiven != true)
+        if (bet.ConsentChallengedGiven != true || bet.ConsentChallengerGiven != true)
         {
             bet.IstAbgeschlossen = false;
         }
 
-        if(bet.ChallengerWonChallenger != bet.ChallengerWonChallenged)
+        if (bet.ChallengerWonChallenger != bet.ChallengerWonChallenged)
         {
             bet.IstAbgeschlossen = false;
         }
