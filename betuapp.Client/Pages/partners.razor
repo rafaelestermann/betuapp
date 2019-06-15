@@ -7,6 +7,9 @@
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
+    <head>
+        <link href="..//css/table.css" rel="stylesheet" />
+    </head>
 
 <h1>Partners Page</h1>
 @if (partnerAccounts == null)
@@ -23,6 +26,7 @@ else
                 <th>Lastname</th>
                 <th>Username</th>
                 <th>Email</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -33,7 +37,7 @@ else
                 <td>@account.Lastname</td>
                 <td>@account.Username</td>
                 <td>@account.Email</td>
-                <td><button onclick=@(() => GoToDetail(account.Id)) /></td>
+                <td><button onclick=@(() => GoToDetail(account.Id)) id="actionButton">Detail</button></td>
             </tr>
             }
         </tbody>

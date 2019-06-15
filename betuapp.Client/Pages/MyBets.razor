@@ -5,7 +5,9 @@
 @inject betuapp.Client.States.AuthenticationState authenticationstate
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
-
+<head>
+    <link href="..//css/table.css" rel="stylesheet" />
+</head>
 
 <h1>MyBets Page</h1>
 
@@ -25,6 +27,8 @@ else
                 <th>Description</th>
                 <th>DueDate</th>
                 <th>Tip</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -33,12 +37,16 @@ else
                 <tr>
                     <td>@bet.Name.</td>
                     <td>@bet.Description</td>
-                    <td>@bet.DueDate</td>
+                    <td>@bet.DueDate.Date</td>
                     <td>@bet.Tip</td>
-                    <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>
+                    <td><button onclick=@(() => GoToDetail(bet.Id)) id="actionButton">Detail</button></td>
                     @if (bet.Challenger.Id == this.authenticationstate.loggedInAccount.Id)
                     {
-                        <td><button onclick=@(() => GoToEdit(bet.Id)) />Edit</td>
+                        <td><button onclick=@(() => GoToEdit(bet.Id)) id="actionButton">Edit</button></td>
+                    }
+                    else
+                    {
+                        <td></td>
                     }
                 </tr>
             }
@@ -54,6 +62,8 @@ else
                 <th>Description</th>
                 <th>DueDate</th>
                 <th>Tip</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -62,9 +72,9 @@ else
                 <tr>
                     <td>@bet.Name.</td>
                     <td>@bet.Description</td>
-                    <td>@bet.DueDate</td>
+                    <td>@bet.DueDate.Date</td>
                     <td>@bet.Tip</td>
-                    <td><button onclick=@(() => GoToDetail(bet.Id)) />Detail</td>              
+                    <td><button onclick=@(() => GoToDetail(bet.Id)) id="actionButton">Detail</button></td>
                 </tr>
             }
         </tbody>
