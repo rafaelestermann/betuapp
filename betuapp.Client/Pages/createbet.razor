@@ -7,16 +7,20 @@
 @inject IUriHelper uriHelper
 @inject HttpClient Http
 
-<header>
-    <link href="..//css/createbet.css" rel="stylesheet" />
-</header>
+    <header>
+        <link href="..//css/createbet.css" rel="stylesheet" />
+        <link href="..//css/general.css" rel="stylesheet" />
+    </header>
+
 
 <div>
-    <a href="/mybets">MyBets</a>
-    <a href="/createbet">Create Bet</a>
+    <a id="breadCrumbText" href="/mybets">Partners</a>
+    <a id="breadCrumbText">/</a>
+    <a id="breadCrumbText" href="/createbet">Create Bet</a>
 </div>
 
 <h1>Create Bet</h1>
+<br />
 <input type="text" name="email" placeholder="Name" bind=@Name />
 <input type="text" name="pass" placeholder="Description" bind=@Description />
 <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />

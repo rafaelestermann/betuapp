@@ -7,11 +7,12 @@
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
-    <head>
-        <link href="..//css/table.css" rel="stylesheet" />
-    </head>
+<head>
+    <link href="..//css/table.css" rel="stylesheet" />
+</head>
 
 <h1>Partners Page</h1>
+<br />
 @if (partnerAccounts == null)
 {
 
@@ -32,13 +33,13 @@ else
         <tbody>
             @foreach (var account in partnerAccounts)
             {
-            <tr>
-                <td>@account.Firstname</td>
-                <td>@account.Lastname</td>
-                <td>@account.Username</td>
-                <td>@account.Email</td>
-                <td><button onclick=@(() => GoToDetail(account.Id)) id="actionButton">Detail</button></td>
-            </tr>
+                <tr>
+                    <td>@account.Firstname</td>
+                    <td>@account.Lastname</td>
+                    <td>@account.Username</td>
+                    <td>@account.Email</td>
+                    <td><button onclick=@(() => GoToDetail(account.Id)) id="actionButton">Detail</button></td>
+                </tr>
             }
         </tbody>
     </table>

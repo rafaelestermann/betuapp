@@ -10,7 +10,7 @@
 </head>
 
 <h1>MyBets Page</h1>
-
+<br />
 
 @if (bets == null)
 {
@@ -19,10 +19,10 @@
 
 else
 {
-<div style="margin-bottom: 17px;">
-    <h2 id="betsDescriptionHeader">Open Bets</h2>
-    <button id="createButton" onclick="@CreateBet">Create Bet</button>
-</div>
+    <div style="margin-bottom: 17px;">
+        <h2 id="betsDescriptionHeader">Open Bets</h2>
+        <button id="createButton" onclick="@CreateBet">Create Bet</button>
+    </div>
     <table class="table">
         <thead>
             <tr>

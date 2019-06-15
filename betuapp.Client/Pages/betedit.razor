@@ -7,21 +7,21 @@
 @inject betuapp.Client.States.DetailState detailState
 @inject IUriHelper uriHelper
 
-    <header>
-        <link href="..//css/createbet.css" rel="stylesheet" />
-        <link href="..//css/general.css" rel="stylesheet" />
-    </header>
+<header>
+    <link href="..//css/createbet.css" rel="stylesheet" />
+    <link href="..//css/general.css" rel="stylesheet" />
+</header>
 
 
 
-    <div>
-        <a id="breadCrumbText" href="/mybets">MyBets</a>
-        <a id="breadCrumbText">/</a>
-        <a id="breadCrumbText" href="/betedit">Edit @detailState.ClickedBetDetail.Name</a>
-    </div>
+<div>
+    <a id="breadCrumbText" href="/mybets">MyBets</a>
+    <a id="breadCrumbText">/</a>
+    <a id="breadCrumbText" href="/betedit">Edit @detailState.ClickedBetDetail.Name</a>
+</div>
 
-
-<h1>Create Bet</h1>
+<h1>Edit Bet</h1>
+<br />
 <input type="text" name="email" placeholder="Name" bind=@Name />
 <input type="text" name="pass" placeholder="Description" bind=@Description />
 <input type="text" name="pass" placeholder="Acceptance Critereas" bind=@Critereas />
