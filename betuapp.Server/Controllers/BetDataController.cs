@@ -45,7 +45,8 @@ namespace betuapp.Server.Controllers
         [HttpPost("[action]")]
         public List<AcceptanceCriterea> CreateAcceptanceCritereas([FromBody]List<AcceptanceCriterea> critereas)
         {
-            foreach(var criterea in critereas)
+            critereas = critereas.Where(x => x.Id == 0).ToList();
+            foreach (var criterea in critereas)
             {
                 acceptanceCritereaService.AddAcceptanceCriterea(criterea);
             }

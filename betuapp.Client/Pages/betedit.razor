@@ -116,6 +116,8 @@
         bet.Id = this.detailState.ClickedBetDetail.Id;
 
         var result = await Http.SendJsonAsync<ExtentedBet>(HttpMethod.Post, "api/BetData/UpdateBet", bet);
+        AcceptanceCritereas.ForEach(criterea => criterea.BetId = result.Id);
+        var result2 = await Http.SendJsonAsync<List<AcceptanceCriterea>>(HttpMethod.Post, "api/BetData/CreateAcceptanceCritereas", AcceptanceCritereas);
         this.uriHelper.NavigateTo("/MyBets");
     }
 

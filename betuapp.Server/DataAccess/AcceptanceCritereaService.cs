@@ -28,6 +28,10 @@ namespace BlazorCrud.Server.DataAccess
         //To Add new Bet record     
         public void AddAcceptanceCriterea(AcceptanceCriterea acceptanceCriterea)
         {
+            if(acceptanceCriterea.Text == null)
+            {
+                acceptanceCriterea.Text = "";
+            }
             try
             {
                 db.AcceptanceCriterea.Add(acceptanceCriterea);
