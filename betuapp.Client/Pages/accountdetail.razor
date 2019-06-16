@@ -6,9 +6,10 @@
 @using betuapp.Shared
 @inject HttpClient Http
 
-    <head>
-        <link href="..//css/general.css" rel="stylesheet" />
-    </head>
+<head>
+    <link href="..//css/general.css" rel="stylesheet" />
+            <link href="..//css/account.css" rel="stylesheet" />
+</head>
 
 <div>
     <a id="breadCrumbText" href="/partners">Partners</a>
@@ -16,10 +17,18 @@
     <a id="breadCrumbText" href="/accountdetail">@detailState.ClickedAccountDetail.Username</a>
 </div>
 
+<h1>Account Detail</h1>
 <br />
+
+<div id="anonymousPerson">
+    <svg id="anonymousPersonImage">
+        <rect class="icon" width="230" height="230" style="fill:blue;stroke:black;stroke-width:5;opacity:0.5"></rect>
+    </svg>
+</div>
+
 <table>
     <tr>
-        <td><b>Firstname:</b></td>
+        <td><b style="margin-right: 90px;">Firstname:</b></td>
         <td></td>
         <td></td>
         <td>@Firstname</td>

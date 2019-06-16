@@ -6,13 +6,29 @@
 @using betuapp.Shared
 @inject HttpClient Http
 
+<header>
+    <link href="..//css/account.css" rel="stylesheet" />
+</header>
 
 
-<h1>Account Page</h1>
+<h1>My Account</h1>
 <br />
+
+<div id="owedTipDiv">
+    <span id="ownedTipCircle">@DueTip</span>
+    <span id="ownedTipText">Owned Tip</span>
+</div>
+
+<div id="anonymousPerson">
+    <svg id="anonymousPersonImage">
+        <rect class="icon" width="230" height="230" style="fill:blue;stroke:black;stroke-width:5;opacity:0.5"></rect>
+    </svg>
+</div>
+
+
 <table>
     <tr>
-        <td><b>Firstname:</b></td>
+        <td><b style="margin-right: 90px;">Firstname:</b></td>
         <td></td>
         <td></td>
         <td>@Firstname</td>
@@ -53,13 +69,8 @@
         <td></td>
         <td>@BetsOpen</td>
     </tr>
-    <tr>
-        <td><b>Due Tip:</b></td>
-        <td></td>
-        <td></td>
-        <td>@DueTip</td>
-    </tr>
 </table>
+
 
 @functions{
     public string Firstname;
