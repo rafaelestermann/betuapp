@@ -7,10 +7,10 @@
 @inject IUriHelper uriHelper
 @inject HttpClient Http
 
-    <header>
-        <link href="..//css/createbet.css" rel="stylesheet" />
-        <link href="..//css/general.css" rel="stylesheet" />
-    </header>
+<header>
+    <link href="..//css/createbet.css" rel="stylesheet" />
+    <link href="..//css/general.css" rel="stylesheet" />
+</header>
 
 
 <div>
@@ -20,11 +20,15 @@
 </div>
 
 <h1>Create Bet</h1>
-<br />
+<label>Name:</label>
 <input type="text" name="email" placeholder="Name" bind=@Name />
-<input type="text" name="pass" placeholder="Description" bind=@Description />
+<label>Description:</label>
+<textarea id="descriptionArea" type="text" name="pass" placeholder="Description" bind=@Description />
+<label>DueDate:</label>
 <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
+<label>Tip:</label>
 <input type="number" name="cpass" placeholder="Tip" bind=@Tip />
+<label>Challenged Account:</label>
 <select bind="@selectedChallenged">
     <option>Select Challenged</option>
 
@@ -33,8 +37,8 @@
         <option value="@acco.Id">@(acco.Firstname + " " + acco.Lastname)</option>
     }
 </select>
-<button onclick="@Create">Create</button>
 <p class="error">@errormessage</p>
+<button onclick="@Create" id="createButton">Create</button>
 
 @functions{
     public List<Account> challengeableAccounts = new List<Account>();
