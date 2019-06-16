@@ -9,6 +9,10 @@
     text-align: center;
 }
 
+#listpoint{
+    list-style-type: unset;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -33,6 +37,19 @@ label {
 
 #descriptionArea{
     height: 150px;
+}
+
+#addCritereaButton {
+    margin-left: 10px;
+    width: 50px;
+    height: 41px;
+    font-size: 25px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border-width: initial;
+    border-style: none;
+    cursor: pointer;
 }
 
 #createButton {

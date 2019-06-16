@@ -11,8 +11,9 @@ namespace betuapp.Server.Controllers
     [Route("api/[controller]")]
     public class BetDataController : Controller
     {
-        BetDataService dataservice = new BetDataService();
+        BetDataService dataservice = new BetDataService();          
         AccountDataService accountSevice = new AccountDataService();
+        AcceptanceCritereaService acceptanceCritereaService = new AcceptanceCritereaService();
 
         [HttpGet("[action]")]
         public IEnumerable<ExtentedBet> Bets()
@@ -33,6 +34,16 @@ namespace betuapp.Server.Controllers
             dataservice.AddBet(bet);
             return bet;
         }
+
+        [HttpPost("[action]")]
+        public List<AcceptanceCriterea> CreateAcceptanceCritereas([FromBody]List<AcceptanceCriterea> critereas)
+        {
+            foreach(var criterea in critereas)
+            {
+                acceptanceCritereaService.AddAcceptanceCriterea(criterea);
+            }
+            return critereas;
+        }        
 
         [HttpPost("[action]")]
         public ExtentedBet UpdateBet([FromBody]ExtentedBet bet)

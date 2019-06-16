@@ -28,6 +28,19 @@
 <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
 <label>Tip:</label>
 <input type="number" name="cpass" placeholder="Tip" bind=@Tip />
+<label>Acceptance Critereas:</label>
+<ul>
+    @foreach (var criterea in AcceptanceCritereas)
+    {
+        <li id="listpoint">@criterea.Text</li>
+    }
+</ul>
+
+<div style="display: flex;">
+    <input type="text" style="flex-grow: 1;" placeholder="new criterea" bind=@currentCriterea />
+    <button onclick="@AddCriterea" id="addCritereaButton">+</button>
+</div>
+
 <label>Challenged Account:</label>
 <select bind="@selectedChallenged">
     <option>Select Challenged</option>
@@ -48,6 +61,18 @@
     public DateTime DueDate;
     public string errormessage;
     public long? selectedChallenged;
+    public List<AcceptanceCriterea> AcceptanceCritereas;
+    public string currentCriterea;
+
+    async Task AddCriterea()
+    {
+        AcceptanceCritereas.Add(new AcceptanceCriterea()
+        {
+            Text = currentCriterea
+        });
+
+    currentCriterea = "";
+    }
 
     async Task Create()
     {
@@ -64,6 +89,7 @@
             return;
         }
 
+
         Bet bet = new Bet();
         bet.ChallengerId = this.state.loggedInAccount.Id;
         bet.ChallengedId = selectedChallenged.Value;
@@ -73,15 +99,19 @@
         bet.Tip = Tip;
 
         var result = await Http.SendJsonAsync<Bet>(HttpMethod.Post, "api/BetData/CreateBet", bet);
+        AcceptanceCritereas.ForEach(criterea => criterea.BetId = result.Id);
+        var result2 = await Http.SendJsonAsync<List<AcceptanceCriterea>>(HttpMethod.Post, "api/BetData/CreateAcceptanceCritereas", AcceptanceCritereas);
         this.uriHelper.NavigateTo("/MyBets");
     }
 
     protected override async Task OnInitAsync()
     {
+        AcceptanceCritereas = new List<AcceptanceCriterea>();
         DueDate = DateTime.Now;
         var loggedInAccountId = this.state.loggedInAccount.Id;
         challengeableAccounts = await Http.GetJsonAsync<List<Account>>("api/AccountData/Accounts");
         challengeableAccounts = challengeableAccounts.Where(x => x.Id != loggedInAccountId).ToList();
+
     }
 
     private bool IsValidSqlDatetime(string someval)

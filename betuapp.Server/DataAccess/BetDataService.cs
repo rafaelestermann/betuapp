@@ -53,6 +53,7 @@ namespace BlazorCrud.Server.DataAccess
                 throw;
             }
         }
+               
 
         //Get the details of a particular Bet    
         public Bet GetBetData(int id)
