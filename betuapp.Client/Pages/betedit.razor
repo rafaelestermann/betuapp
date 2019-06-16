@@ -21,24 +21,56 @@
 </div>
 
 <h1>Edit Bet</h1>
+<label>Name:</label>
 <input type="text" name="email" placeholder="Name" bind=@Name />
-<input type="text" name="pass" placeholder="Description" bind=@Description />
-<input type="text" name="pass" placeholder="Acceptance Critereas" bind=@Critereas />
+<label>Description:</label>
+<textarea id="descriptionArea" type="text" name="pass" placeholder="Description" bind=@Description />
+<label>DueDate:</label>
 <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
-<input type="number" name="cpass" placeholder="Tip" bind=@Tip />
-<input type="text" name="input" value="@challenged.Username" readonly>
-<button onclick="@Save">Save Bet</button>
+<label>Tip:</label>
+<div style="display: flex;">
+    <input type="number" name="cpass" placeholder="Tip" style="flex-grow: 1;" bind=@Tip />
+    <div id="CHFdiv">
+        <span style="display:table-cell; vertical-align:middle;">CHF</span>
+    </div>
+</div>
+
+<label>Acceptance Critereas:</label>
+<ul>
+    @if (AcceptanceCritereas.Any())
+    {
+        foreach (var criterea in AcceptanceCritereas)
+        {
+            if (criterea.Text == null)
+            {
+                <li id="listpoint"></li>
+            }
+            else
+            {
+                <li id="listpoint">@criterea.Text</li>
+            }
+        }
+    }
+</ul>
+
+<div style="display: flex;">
+    <input type="text" style="flex-grow: 1;" placeholder="new criterea" bind=@currentCriterea />
+    <button onclick="@AddCriterea" id="addCritereaButton">+</button>
+</div>
+
+
 <p class="error">@errormessage</p>
+<button onclick="@Save" id="createButton">Save</button>
 
 @functions{
     public string Name;
     public string Description;
-    public string Critereas;
     public long Tip;
     public DateTime DueDate;
     public string errormessage;
     public Account challenged;
-
+    public List<AcceptanceCriterea> AcceptanceCritereas;
+    public string currentCriterea;
 
     protected async Task SaveBet()
     {
@@ -46,14 +78,25 @@
         this.uriHelper.NavigateTo("/MyBets");
     }
 
+    async Task AddCriterea()
+    {
+        AcceptanceCritereas.Add(new AcceptanceCriterea()
+        {
+            Text = currentCriterea
+        });
+
+        currentCriterea = "";
+    }
+
     protected override async Task OnInitAsync()
     {
-
+        AcceptanceCritereas = new List<AcceptanceCriterea>();
         this.Name = this.detailState.ClickedBetDetail.Name;
         this.Description = this.detailState.ClickedBetDetail.Description;
         this.DueDate = this.detailState.ClickedBetDetail.DueDate;
         this.Tip = this.detailState.ClickedBetDetail.Tip;
         this.challenged = this.detailState.ClickedBetDetail.Challenged;
+        AcceptanceCritereas = this.detailState.ClickedBetAcceptanceCritereas;
     }
 
     async Task Save()

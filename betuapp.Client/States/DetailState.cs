@@ -10,5 +10,6 @@ namespace betuapp.Client.States
     {
         public Account ClickedAccountDetail;
         public ExtentedBet ClickedBetDetail;
+        public List<AcceptanceCriterea> ClickedBetAcceptanceCritereas;
     }
 }

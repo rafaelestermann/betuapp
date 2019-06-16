@@ -28,6 +28,13 @@ namespace betuapp.Server.Controllers
             return extendetBets;
         }
 
+        [HttpGet("[action]")]
+        public List<AcceptanceCriterea> AcceptanceCritereas()
+        {
+            var list = acceptanceCritereaService.GetAllAcceptanceCriteras().ToList();
+            return list;
+        }        
+
         [HttpPost("[action]")]
         public Bet CreateBet([FromBody]Bet bet)
         {

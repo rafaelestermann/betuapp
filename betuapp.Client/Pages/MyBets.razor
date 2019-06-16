@@ -87,21 +87,25 @@ else
 
 @functions{
     List<ExtentedBet> bets = new List<ExtentedBet>();
+    List<AcceptanceCriterea> critereas;
 
     protected override async Task OnInitAsync()
     {
         var loggedInAccountId = this.authenticationstate.loggedInAccount.Id;
         bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + loggedInAccountId);
+        critereas = await Http.GetJsonAsync<List<AcceptanceCriterea>>("api/BetData/AcceptanceCritereas/");
     }
 
     void GoToDetail(long betId)
     {
+        this.detailState.ClickedBetAcceptanceCritereas = critereas.Where(x => x.BetId == betId).ToList();
         this.detailState.ClickedBetDetail = this.bets.Where(x => x.Id == betId).First();
         this.uriHelper.NavigateTo("/betdetail");
     }
 
     void GoToEdit(long betId)
     {
+        this.detailState.ClickedBetAcceptanceCritereas = critereas.Where(x => x.BetId == betId).ToList();
         this.detailState.ClickedBetDetail = this.bets.Where(x => x.Id == betId).First();
         this.uriHelper.NavigateTo("/betedit");
     }

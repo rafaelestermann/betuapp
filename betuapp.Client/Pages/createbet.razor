@@ -27,7 +27,13 @@
 <label>DueDate:</label>
 <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate />
 <label>Tip:</label>
-<input type="number" name="cpass" placeholder="Tip" bind=@Tip />
+<div style="display: flex;">
+    <input type="number" name="cpass" placeholder="Tip" style="flex-grow: 1;" bind=@Tip />
+    <div id="CHFdiv">
+        <span style="display:table-cell; vertical-align:middle;">CHF</span>
+    </div>
+</div>
+
 <label>Acceptance Critereas:</label>
 <ul>
     @foreach (var criterea in AcceptanceCritereas)

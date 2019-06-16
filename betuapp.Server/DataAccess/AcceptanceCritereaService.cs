@@ -53,7 +53,12 @@ namespace BlazorCrud.Server.DataAccess
             }
         }
 
-     
+        internal IEnumerable<AcceptanceCriterea> GetAllAcceptanceCriteras()
+        {
+            return db.AcceptanceCriterea.ToList();
+        }
+
+
         //To Delete the record of a particular Bet    
         public void DeleteAcceptanceCriterea(int id)
         {
