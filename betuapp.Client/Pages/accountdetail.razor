@@ -8,7 +8,7 @@
 
 <head>
     <link href="..//css/general.css" rel="stylesheet" />
-            <link href="..//css/account.css" rel="stylesheet" />
+    <link href="..//css/account.css" rel="stylesheet" />
 </head>
 
 <div>
@@ -20,9 +20,7 @@
 <h1>Account Detail</h1>
 
 <div id="anonymousPerson">
-    <svg id="anonymousPersonImage">
-        <rect class="icon" width="230" height="230" style="fill:blue;stroke:black;stroke-width:5;opacity:0.5"></rect>
-    </svg>
+    <img src="..//pictures/anonymousperson.svg" id="anonymousImage" alt="anonymous person symbol" />
 </div>
 
 <table>
@@ -86,7 +84,8 @@
         Username = this.detailState.ClickedAccountDetail.Username;
         Email = this.detailState.ClickedAccountDetail.Email;
 
-        List<ExtentedBet> bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + this.detailState.ClickedAccountDetail.Id);
+        List<ExtentedBet>
+    bets = await Http.GetJsonAsync<List<ExtentedBet>>("api/BetData/GetBetsByAccount/" + this.detailState.ClickedAccountDetail.Id);
 
         foreach (var bet in bets.Where(x => x.IstAbgeschlossen))
         {

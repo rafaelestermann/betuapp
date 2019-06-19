@@ -9,6 +9,7 @@
 
 <head>
     <link href="..//css/general.css" rel="stylesheet" />
+    <link href="..//css/createbet.css" rel="stylesheet" />
 </head>
 
 
@@ -18,33 +19,50 @@
     <a href="/betdetail">@detailState.ClickedBetDetail.Name</a>
 </div>
 <h1>Bet Detail</h1>
+<label>Name:</label>
 <input type="text" name="email" placeholder="Name" bind=@Name readonly />
-<input type="text" name="pass" placeholder="Description" bind=@Description readonly />
+<label>Description:</label>
+<textarea type="text" name="pass" placeholder="Description" bind=@Description readonly />
+<label>DueDate:</label>
 <input type="datetime" name="cpass" placeholder="DueDate" bind=@DueDate readonly />
+<label>Tip:</label>
 <input type="number" name="cpass" placeholder="Tip" bind=@Tip readonly />
+<label>Challenged Account:</label>
 <input type="text" name="input" value="@challenged.Username" readonly>
-<input type="text" name="input" value="@Evidence">
-
+<label>Acceptance Critereas:</label>
+<ul>
+    @foreach (var criterea in AcceptanceCritereas)
+    {
+        <li id="listpoint">@criterea.Text</li>
+    }
+</ul>
+<label>Evidence:</label>
+<textarea type="text" name="input" style="height: 200px;" bind="@Evidence" />
+<label style="display: block;">Consent:</label>
 @if (ConsentGiven == false)
 {
-    <button onclick="@GiveConsent">Give Consent</button>
+    <button onclick="@GiveConsent" id="consentButton">Give Consent</button>
 }
 else
 {
-    <button onclick="@GiveNotConsent">Give Consent not</button>
-    <h3>consent:</h3>
+    <button onclick="@GiveNotConsent" id="consentButton">Give Consent not</button>
     <div>
-        <input type="checkbox" bind="@consentTrue" /><br />
-        <label for="scales">challenger won</label>
+        <label style="display: block;">challenger won</label>
+        <input type="checkbox" bind="@consentTrue" id="checkboxInput" /><br />
+     
     </div>
 
     <div>
-        <input type="checkbox" bind="@consentFalse" /><br />
-        <label for="scales">challenged won</label>
+        <label style="display: block;">challenged won</label>
+        <input id="checkboxInput"  type="checkbox" bind="@consentFalse" /><br />
     </div>
 }
-<button onclick="@Save">Save and Back</button>
+
+
+
 <p class="error">@errormessage</p>
+<button onclick="@Save" id="createButton">Save and Back</button>
+
 
 @functions{
     public string errormessage;
@@ -57,6 +75,7 @@ else
     public bool consentTrue;
     public bool consentFalse;
     public bool ConsentGiven;
+    public List<AcceptanceCriterea> AcceptanceCritereas;
 
     async Task GiveConsent()
     {
@@ -69,11 +88,13 @@ else
 
     protected override async Task OnInitAsync()
     {
+        AcceptanceCritereas = this.detailState.ClickedBetAcceptanceCritereas;
         this.Name = this.detailState.ClickedBetDetail.Name;
         this.Description = this.detailState.ClickedBetDetail.Description;
         this.DueDate = this.detailState.ClickedBetDetail.DueDate;
         this.Tip = this.detailState.ClickedBetDetail.Tip;
         this.challenged = this.detailState.ClickedBetDetail.Challenged;
+        this.Evidence = this.detailState.ClickedBetDetail.Evidence;
 
         if (this.authenticationstate.loggedInAccount.Id == this.detailState.ClickedBetDetail.Challenger.Id)
         {
