@@ -2,12 +2,13 @@
 @using Microsoft.AspNetCore.Components
 @layout MainLayoutLoggedOut
 @inject IUriHelper uriHelper
+@inject IJSRuntime JsRuntime;
 
 <head>
     <link href="..//css/landing.css" rel="stylesheet" />
 </head>
 
-<body>
+<body >
     <div id="landingcontainer">
         <img src="..//logo/Logo_NoText.svg" class="icon-logo" alt="icon from bet u" />
         <h1>
@@ -24,24 +25,36 @@
             </div>
 
             <div class="column" style="text-align: center;">
-                <img  id="logoimage"  class="icon" src="Logo/Logo_OnlyText.svg" />
-                    <p id="text" style="margin-left: auto; margin-right: auto;" class="icon">easy, accessible</p>              
+                <img id="logoimage" class="icon" src="Logo/Logo_OnlyText.svg" />
+                <p id="text" style="margin-left: auto; margin-right: auto;" class="icon">easy, accessible</p>
                 <button onclick="@GetStarted" id="getStartedButton">Get Started</button>
             </div>
         </div>
     </div>
 
     <div class="row" style="width: 100%; height: 50%;">
-        <video class="center" controls autoplay style="width: 100%;">
+        <video class="center" autoplay style="width: 100%;" muted loop>
             <source src="..//video/betU.mp4" type="video/mp4">
         </video>
     </div>
 </body>
 
 @functions{
-    async Task GetStarted()
-    {
+    async Task GetStarted()    {
+       
         this.uriHelper.NavigateTo("/registration");
+    }
+
+    public async void TriggerJsPrompt()
+    {
+        // showPrompt is implemented in wwwroot/exampleJsInterop.js
+        var name = await JsRuntime.InvokeAsync<string>(
+                "exampleJsFunctions.showPrompt",
+                "What's your name?");
+        // displayWelcome is implemented in wwwroot/exampleJsInterop.js
+        await JsRuntime.InvokeAsync<string>(
+                "exampleJsFunctions.displayWelcome",
+                $"Hello {name}! Welcome to Blazor!");
     }
 
 }
