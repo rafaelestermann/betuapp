@@ -8,28 +8,34 @@
 </head>
 
 <body>
+    <div id="landingcontainer">
+        <img src="..//logo/Logo_NoText.svg" class="icon-logo" alt="icon from bet u" />
+        <h1>
+            <img id="logoimage" src="..//logo/Logo_OnlyText.svg" class="icon-text" alt="icon from bet u" height="30%" />
+        </h1>
+        <p id="text">easy, accessible</p>
+        <button onclick="@GetStarted" id="getStartedButton">Get Started</button>
+    </div>
     <div class="main-container-landing-page">
-         <div class="row">
+        <div class="row">
 
-            <div class="column" style="text-align:center;">
-                <img src="Logo/Logo_NoText.svg"/>
+            <div class="column" style="text-align:center;margin-bottom: 10px;">
+                <img id="smallIcon" src="Logo/Logo_NoText.svg" />
             </div>
 
-            <div class="column">
-                <img class="icon" src="Logo/Logo_OnlyText.svg"/>
-
-                <p class="icon">easy, accessible</p>
-                <button onclick="@GetStarted" class="icon">Get Started</button>
-            </div>
-            </div>
-
-            <div class="row" style="margin-top: 100px; width: 100%; height: 50%;">
-                <video class="center" controls autoplay>
-                    <source src="..//video/betU.mp4" type="video/mp4">
-                </video>
+            <div class="column" style="text-align: center;">
+                <img  id="logoimage"  class="icon" src="Logo/Logo_OnlyText.svg" />
+                    <p id="text" style="margin-left: auto; margin-right: auto;" class="icon">easy, accessible</p>              
+                <button onclick="@GetStarted" id="getStartedButton">Get Started</button>
             </div>
         </div>
+    </div>
 
+    <div class="row" style="width: 100%; height: 50%;">
+        <video class="center" controls autoplay style="width: 100%;">
+            <source src="..//video/betU.mp4" type="video/mp4">
+        </video>
+    </div>
 </body>
 
 @functions{

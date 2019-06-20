@@ -15,3 +15,4 @@ C:\Users\sirh3e\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\bet
 C:\Users\sirh3e\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.AssemblyInfo.cs
 C:\Users\sirh3e\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.dll
 C:\Users\sirh3e\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.pdb
+C:\Users\rafae\source\repos\betuapp\betuapp.Shared\obj\Debug\netstandard2.0\betuapp.Shared.csprojAssemblyReference.cache
