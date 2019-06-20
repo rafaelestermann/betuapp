@@ -1,10 +1,8 @@
 ﻿using betuapp.Server.DataAccess;
 using betuapp.Shared;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorCrud.Server.DataAccess
 {

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-//using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿//using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using betuapp.Shared;
-using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using betuapp.Client.Services.Contracts;
 
 namespace betuapp.Client.Services.Implementations

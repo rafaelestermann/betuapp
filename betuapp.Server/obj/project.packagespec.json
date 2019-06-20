@@ -1,0 +1,94 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Server\\betuapp.Server.csproj",
+    "projectName": "betuapp.Server",
+    "projectPath": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Server\\betuapp.Server.csproj",
+    "outputPath": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Server\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp3.0"
+    ],
+    "sources": {
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+      "https://api.nuget.org/v3/index.json": {},
+      "https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json": {},
+      "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "projectReferences": {
+          "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Client\\betuapp.Client.csproj": {
+            "projectPath": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Client\\betuapp.Client.csproj"
+          },
+          "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Shared\\betuapp.Shared.csproj": {
+            "projectPath": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Shared\\betuapp.Shared.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.0": {
+      "dependencies": {
+        "Microsoft.AspNetCore.Authentication.JwtBearer": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.AspNetCore.Blazor.Server": {
+          "target": "Package",
+          "version": "[3.0.0-preview4-19216-03, )"
+        },
+        "Microsoft.AspNetCore.Identity": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+          "target": "Package",
+          "version": "[3.0.0-preview4-19216-03, )"
+        },
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[2.2.4, )"
+        },
+        "Microsoft.EntityFrameworkCore.SqlServer": {
+          "target": "Package",
+          "version": "[2.2.4, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.4, )"
+        },
+        "Microsoft.IdentityModel.Tokens": {
+          "target": "Package",
+          "version": "[5.4.0, )"
+        },
+        "Microsoft.NETCore.Platforms": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[3.0.0-preview5.19224.8, )",
+          "autoReferenced": true
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[5.4.0, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
