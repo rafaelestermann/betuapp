@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Shared\\betuapp.Shared.csproj",
+    "projectUniqueName": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Shared\\betuapp.Shared.csproj",
     "projectName": "betuapp.Shared",
-    "projectPath": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Shared\\betuapp.Shared.csproj",
-    "outputPath": "C:\\Users\\sirh3e\\source\\repos\\betuapp\\betuapp.Shared\\obj\\",
+    "projectPath": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Shared\\betuapp.Shared.csproj",
+    "outputPath": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Shared\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
