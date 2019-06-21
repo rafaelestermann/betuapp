@@ -1,0 +1,91 @@
+﻿#anonymousPersonImage {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 230px;
+    height: 230px;
+}
+
+#anonymousPerson {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+}
+
+#owedTipDiv {
+    float: right;
+    margin-right: 20px;
+}
+
+#ownedTipText {
+    display: block;
+    margin-top: 10px;
+}
+
+#ownedTipCircle {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    display: table;
+    margin: 0 auto;
+}
+
+tr {
+    line-height: 30px;
+}
+
+#anonymousImage {
+    width: 300px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    #anonymousImage {
+        width: 180px;
+        margin-bottom: 30px;
+    }
+
+    tr {
+        line-height: 18px;
+        font-size: 14px;
+    }
+
+    #anonymousPersonImage {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #ownedTipCircle {
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-size: 1em;
+        display: table;
+        margin: 0 auto;
+    }
+
+    #anonymousPersonImage {
+        text-align: center;
+        margin-bottom: 30px;
+        width: 210px;
+        height: 210px;
+    }
+
+    #ownedTipText {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
