@@ -778,23 +778,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CH-CAD\\.nuget\\packages\\": {},
+    "C:\\Users\\rafae\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Client\\betuapp.Client.csproj",
+      "projectUniqueName": "C:\\Users\\rafae\\source\\repos\\betuapp\\betuapp.Client\\betuapp.Client.csproj",
       "projectName": "betuapp.Client",
-      "projectPath": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Client\\betuapp.Client.csproj",
-      "packagesPath": "C:\\Users\\CH-CAD\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Client\\obj\\",
+      "projectPath": "C:\\Users\\rafae\\source\\repos\\betuapp\\betuapp.Client\\betuapp.Client.csproj",
+      "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rafae\\source\\repos\\betuapp\\betuapp.Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\CH-CAD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -809,8 +809,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Shared\\betuapp.Shared.csproj": {
-              "projectPath": "C:\\Users\\CH-CAD\\Desktop\\folder\\betuapp.Shared\\betuapp.Shared.csproj"
+            "C:\\Users\\rafae\\source\\repos\\betuapp\\betuapp.Shared\\betuapp.Shared.csproj": {
+              "projectPath": "C:\\Users\\rafae\\source\\repos\\betuapp\\betuapp.Shared\\betuapp.Shared.csproj"
             }
           }
         }

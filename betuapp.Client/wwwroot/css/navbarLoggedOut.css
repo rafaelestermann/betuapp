@@ -7,8 +7,6 @@ a {
     color: #000;
 }
 
-/* header */
-
 .header {
     background-color: #fff;
     box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
@@ -45,17 +43,13 @@ a {
         padding: 10px 20px;
         text-decoration: none;
     }
-
-    /* menu */
-
+    
     .header .menu {
         clear: both;
         max-height: 0;
         transition: max-height .2s ease-out;
     }
-
-    /* menu icon */
-
+    
     .header .menu-icon {
         cursor: pointer;
         display: inline-block;
@@ -93,7 +87,6 @@ a {
                 top: -5px;
             }
 
-    /* menu btn */
 
     .header .menu-btn {
         display: none;
@@ -140,27 +133,10 @@ a {
     }
 }
 
-.footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-}
-
 #navLogo {
     vertical-align: middle;
     height: 40px;
     position: relative;
     top: 20px;
     margin-left: 10px;
-}
-
-
-.four{
-    text-decoration: underline;
-
 }
